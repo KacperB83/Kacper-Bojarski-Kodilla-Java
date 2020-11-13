@@ -18,6 +18,7 @@ public class TestingMain {
         Calculator calculator = new Calculator(5, 10);
         System.out.println(calculator.add());
         System.out.println(calculator.subtract());
+        System.out.println();
         if(calculator.getA() != 0 && calculator.getB() != 0) {
             System.out.println("test OK");
         } else {
