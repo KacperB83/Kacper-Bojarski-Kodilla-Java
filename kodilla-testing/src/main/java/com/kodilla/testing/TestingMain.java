@@ -17,12 +17,12 @@ public class TestingMain {
         System.out.println("Test - pierwszy test jednostkowy:");
         Calculator calculator = new Calculator();
 
-        calculator.add(2,4);
-        calculator.subtract(6,-7);
+        int addResult = calculator.add(2,4);
+        int subResult = calculator.subtract(6,-7);
 
         System.out.println();
 
-        if(calculator.getA() != 0 && calculator.getB() != 0) {
+        if((addResult == 6) && (subResult == 13)) {
             System.out.println("test OK");
         } else {
             System.out.println("Error!");
