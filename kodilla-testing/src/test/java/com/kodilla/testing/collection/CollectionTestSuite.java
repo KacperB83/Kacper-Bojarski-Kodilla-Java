@@ -4,6 +4,7 @@ import com.kodilla.testing.collection.OddNumbersExterminator;
 import org.junit.jupiter.api.*;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @DisplayName("List test ")
@@ -23,15 +24,15 @@ class CollectionTestSuite {
     void testOddNumbersExterminatorEmptyList () {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        List<Integer> oddNumbers = oddNumbersExterminator.exterminate();
+        List<Integer> numbers = new ArrayList<>();
+
+        numbers.add(null);
+        numbers.add(0);
         //When
-        System.out.println("Checking for null values");
-        for (Integer number: oddNumbers) {
-            if(number == null) {
-            }
-        }
+        System.out.println("Checking if can put null values");
+
         //Then
-        Assertions.assertFalse();
+        //Assertions.assertFalse();
 
     }
     void testOddNumbersExterminatorNormalList () {
