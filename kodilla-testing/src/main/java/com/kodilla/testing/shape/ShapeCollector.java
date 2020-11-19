@@ -9,10 +9,7 @@ public class ShapeCollector {
     private List<Shape> shapes = new ArrayList<>();
 
     public void addFigure (Shape shape) {
-        this.shape = shape;
-        for (Shape figure: shapes) {
-            shapes.add(figure);
-        }
+        shapes.add(shape);
     }
 
     public List<Shape> removeFigure (Shape shape) {
@@ -20,8 +17,8 @@ public class ShapeCollector {
         return shapes;
     }
 
-    public String getFigure (int n) {
-        return " This is " + shapes.get(n) + " and it's field is "+ shape.getField() + " square centimeters.";
+    public Shape getFigure (int n) {
+        return shapes.get(n);
     }
 
     public List<Shape> showFigures() {

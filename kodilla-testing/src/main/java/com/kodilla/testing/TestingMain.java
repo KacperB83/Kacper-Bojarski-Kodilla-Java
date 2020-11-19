@@ -12,8 +12,7 @@ import java.util.List;
 public class TestingMain {
     public static void main(String[] args) {
         ShapeCollector shapeCollector = new ShapeCollector();
-        //When
-        shapeCollector.addFigure(new Circle());
+        shapeCollector.addFigure(new Circle(5));
         System.out.println(shapeCollector.showFigures());
 
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();

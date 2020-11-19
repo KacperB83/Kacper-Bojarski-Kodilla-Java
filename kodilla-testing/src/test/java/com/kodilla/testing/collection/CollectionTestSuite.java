@@ -7,7 +7,7 @@ import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@DisplayName("List test ")
+@DisplayName("Class test ")
 class CollectionTestSuite {
     private static int testCounter = 0;
 
@@ -27,34 +27,41 @@ class CollectionTestSuite {
         System.out.println("Preparing to execute test # " + testCounter);
     }
 
-    @DisplayName("when create List with null , " +
-            "then check if it's empty"
+    @DisplayName("when create empty new object , " +
+            "then check if class works fine"
     )
     @Test
     void testOddNumbersExterminatorEmptyList () {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        List<Integer> numbers = new ArrayList<>();
-        //When
-        numbers.add(null);
-        System.out.println("Checking if can put null values");
-        //Then
-        Assertions.assertEquals(null, numbers.get(0));
+        List<Integer> numbers1 = new ArrayList<>();
 
+        //When
+        List<Integer> newList = oddNumbersExterminator.exterminate(numbers1);
+        System.out.println("Checking if can put empty List");
+        //Then
+        Assertions.assertEquals(0, newList.size());
     }
-    @DisplayName("when create List with odd value , " +
+
+    @DisplayName("when create new object with odd and even values , " +
             "then check if it was put in List "
     )
     @Test
     void testOddNumbersExterminatorNormalList () {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        List<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers1 = new ArrayList<>();
         //When
-        numbers.add(6);
-
+        numbers1.add(6);
+        numbers1.add(1);
+        numbers1.add(4);
+        numbers1.add(3);
+        numbers1.add(10);
+        List<Integer> newList = oddNumbersExterminator.exterminate(numbers1);
         System.out.println("Checking if can put odd value");
         //Then
-        Assertions.assertEquals(6, numbers.get(0));
+        Assertions.assertEquals(6, newList.get(0));
+        Assertions.assertEquals(4, newList.get(1));
+        Assertions.assertEquals(10, newList.get(2));
     }
 }
