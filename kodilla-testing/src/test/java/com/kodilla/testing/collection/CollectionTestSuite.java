@@ -5,6 +5,8 @@ import org.junit.jupiter.api.*;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @DisplayName("Class test ")
@@ -50,13 +52,15 @@ class CollectionTestSuite {
     void testOddNumbersExterminatorNormalList () {
         //Given
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        List<Integer> numbers1 = new ArrayList<>();
+       // List<Integer> numbers1 = new ArrayList<>();
         //When
-        numbers1.add(6);
+        Integer nr[] = new Integer[] {6, 1, 4, 3, 10};
+        List<Integer> numbers1 = Arrays.asList(nr);
+        /*numbers1.add(6);
         numbers1.add(1);
         numbers1.add(4);
         numbers1.add(3);
-        numbers1.add(10);
+        numbers1.add(10);*/
         List<Integer> newList = oddNumbersExterminator.exterminate(numbers1);
         System.out.println("Checking if can put odd value");
         //Then

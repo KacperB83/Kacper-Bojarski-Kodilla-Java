@@ -1,9 +1,7 @@
 package com.kodilla.testing;
 
 import com.kodilla.testing.collection.OddNumbersExterminator;
-import com.kodilla.testing.shape.Circle;
-import com.kodilla.testing.shape.Shape;
-import com.kodilla.testing.shape.ShapeCollector;
+import com.kodilla.testing.shape.*;
 import com.kodilla.testing.user.Calculator;
 
 import java.util.ArrayList;
@@ -13,9 +11,16 @@ public class TestingMain {
     public static void main(String[] args) {
         ShapeCollector shapeCollector = new ShapeCollector();
         shapeCollector.addFigure(new Circle(5));
-        System.out.println(shapeCollector.showFigures());
+        shapeCollector.addFigure(new Square(5));
+        shapeCollector.addFigure(new Triangle(5, 5));
+        shapeCollector.showFigures();
+        System.out.println();
+        shapeCollector.getFigure(0);
+        System.out.println();
+        shapeCollector.removeFigure(shapeCollector.getFigure(1));
 
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+
+       /* OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         List<Integer> numbers = new ArrayList<>();
         numbers.add(1);
         numbers.add(24);
@@ -41,6 +46,6 @@ public class TestingMain {
             System.out.println("test OK");
         } else {
             System.out.println("Error!");
-        }
+        }*/
     }
 }

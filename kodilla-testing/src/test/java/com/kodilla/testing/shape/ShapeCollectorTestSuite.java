@@ -26,53 +26,49 @@ public class ShapeCollectorTestSuite {
     }
 
     @Nested
-    @DisplayName("Tests for shapes")
+    @DisplayName("Tests for ShapeCollector")
     class TestShapeMethods {
         @Test
         public void testAddFigure() {
             //Given
             ShapeCollector shapeCollector = new ShapeCollector();
             //When
-            shapeCollector.addFigure(new Circle(5));
+            shapeCollector.addFigure(new Circle(8));
             //Then
-            Assertions.assertEquals("circle", shapeCollector.getFigure(0));
+            Assertions.assertEquals(1, shapeCollector.showFigures());
         }
-        /*@Test
+
+        @Test
+        public void testRemoveFigure() {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector();
+            shapeCollector.addFigure(new Circle(8));
+            //When
+            shapeCollector.removeFigure(shapeCollector.getFigure(0));
+            //Then
+            Assertions.assertNull(shapeCollector);
+        }
+        @Test
         public void testGetFigure () {
             //Given
-            ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
-            ForumPost thePost = new ForumPost("Hello everyone, " +
-                    "this is my first contribution here!", "mrsmith");
-            forumUser.addPost(thePost.getAuthor(), thePost.getPostBody());
+            ShapeCollector shapeCollector = new ShapeCollector();
+            shapeCollector.addFigure(new Circle(8));
             //When
-            ForumPost retrievedPost;
-            retrievedPost = forumUser.getPost(0);
+            shapeCollector.getFigure(0);
             //Then
-            Assertions.assertEquals(thePost, retrievedPost);
+            Assertions.assertEquals("Circle", shapeCollector.getFigure(0));
         }
         @Test
-        public void testRemovePostNotExisting() {
+        public void testShowFigures() {
             //Given
-            ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
-            ForumPost thePost = new ForumPost("Hello everyone, " +
-                    "this is my first contribution here!", "mrsmith");
+            ShapeCollector shapeCollector = new ShapeCollector();
+            shapeCollector.addFigure(new Circle(8));
+            shapeCollector.addFigure(new Triangle(8, 6));
+            shapeCollector.addFigure(new Square(8));
             //When
-            boolean result = forumUser.removePost(thePost);
+            shapeCollector.showFigures();
             //Then
-            Assertions.assertFalse(result);
+            Assertions.assertEquals(3, 3);
         }
-        @Test
-        public void testRemovePost() {
-            //Given
-            ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
-            ForumPost thePost = new ForumPost("Hello everyone, " +
-                    "this is my first contribution here!", "mrsmith");
-            forumUser.addPost(thePost.getAuthor(), thePost.getPostBody());
-            //When
-            boolean result = forumUser.removePost(thePost);
-            //Then
-            Assertions.assertTrue(result);
-            Assertions.assertEquals(0, forumUser.getPostsQuantity());
-        }*/
     }
 }

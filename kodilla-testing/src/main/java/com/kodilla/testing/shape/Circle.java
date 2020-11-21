@@ -1,10 +1,11 @@
 package com.kodilla.testing.shape;
 
 public class Circle implements Shape {
-    private int radius;
-    private double field = Math.PI*Math.pow(radius,2);
+    private Shape shape;
+    private double radius;
+    private double field;
 
-    public Circle(int radius){
+    public Circle(double radius){
         this.radius = radius;
     }
 
@@ -13,6 +14,13 @@ public class Circle implements Shape {
     }
 
     public double getField() {
-        return field;
+        return field = Math.PI*Math.pow(radius,2);
+    }
+
+    @Override
+    public String toString() {
+        return "This " + getShapeName() +
+                ", has radius = " + radius +
+                " cm, and field = " + getField()+ " cm2";
     }
 }
