@@ -3,13 +3,18 @@ package com.kodilla.testing;
 import com.kodilla.testing.collection.OddNumbersExterminator;
 import com.kodilla.testing.shape.*;
 import com.kodilla.testing.user.Calculator;
+import com.kodilla.testing.weather.stub.Temperatures;
+import com.kodilla.testing.weather.stub.WeatherForecast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class TestingMain {
     public static void main(String[] args) {
-        ShapeCollector shapeCollector = new ShapeCollector();
+
+
+       /* ShapeCollector shapeCollector = new ShapeCollector();
         shapeCollector.addFigure(new Circle(5));
         shapeCollector.addFigure(new Square(5));
         shapeCollector.addFigure(new Triangle(5, 5));
