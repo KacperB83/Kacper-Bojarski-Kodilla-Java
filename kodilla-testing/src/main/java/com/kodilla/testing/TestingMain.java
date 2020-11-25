@@ -1,6 +1,8 @@
 package com.kodilla.testing;
 
 import com.kodilla.testing.collection.OddNumbersExterminator;
+import com.kodilla.testing.forum.statistics.CalculateStatistics;
+import com.kodilla.testing.forum.statistics.Statistics;
 import com.kodilla.testing.shape.*;
 import com.kodilla.testing.user.Calculator;
 import com.kodilla.testing.weather.stub.Temperatures;
@@ -12,7 +14,6 @@ import java.util.List;
 
 public class TestingMain {
     public static void main(String[] args) {
-
 
        /* ShapeCollector shapeCollector = new ShapeCollector();
         shapeCollector.addFigure(new Circle(5));
