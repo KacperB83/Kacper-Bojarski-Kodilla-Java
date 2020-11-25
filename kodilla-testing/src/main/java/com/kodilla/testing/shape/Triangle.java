@@ -3,7 +3,7 @@ package com.kodilla.testing.shape;
 public class Triangle implements Shape {
     private double base;
     private double height;
-    private double field;
+    private double field = (base*height)/2;
 
     public Triangle(double base, double height) {
         this.base = base;
@@ -15,7 +15,7 @@ public class Triangle implements Shape {
     }
 
     public double getField() {
-        return field  = (base*height)/2;
+        return field;
     }
     @Override
     public String toString() {
