@@ -73,5 +73,40 @@ public class ShapeCollectorTestSuite {
             //Then
             Assertions.assertEquals(3, shapeCollector.showFigures().size());
         }
+
+        @Test
+        public void testGetSquareField () {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector();
+            shapeCollector.addFigure(new Square(5));
+            //When
+            Shape retrievedFigure;
+            retrievedFigure = shapeCollector.getFigure(0);
+            //Then
+            Assertions.assertEquals(25, retrievedFigure.getField());
+        }
+
+        @Test
+        public void testGetTriangleField () {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector();
+            shapeCollector.addFigure(new Triangle(5, 4));
+            //When
+            Shape retrievedFigure;
+            retrievedFigure = shapeCollector.getFigure(0);
+            //Then
+            Assertions.assertEquals(10, retrievedFigure.getField());
+        }
+        @Test
+        public void testGetCircleField () {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector();
+            shapeCollector.addFigure(new Circle(5));
+            //When
+            Shape retrievedFigure;
+            retrievedFigure = shapeCollector.getFigure(0);
+            //Then
+            Assertions.assertEquals(78.53981633974483, retrievedFigure.getField());
+        }
     }
 }

@@ -2,7 +2,7 @@ package com.kodilla.testing.shape;
 
 public class Square implements Shape {
     private double side;
-    private double field = Math.pow(side, 2);
+    private double field;
 
     public Square(double side) {
         this.side = side;
@@ -13,7 +13,7 @@ public class Square implements Shape {
     }
 
     public double getField() {
-        return field;
+        return field = Math.pow(side, 2);
     }
 
     @Override

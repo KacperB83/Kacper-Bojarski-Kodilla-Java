@@ -3,7 +3,7 @@ package com.kodilla.testing.shape;
 public class Circle implements Shape {
 
     private double radius;
-    private double field = Math.PI*Math.pow(radius,2);
+    private double field;
 
     public Circle(double radius){
         this.radius = radius;
@@ -14,7 +14,7 @@ public class Circle implements Shape {
     }
 
     public double getField() {
-        return field;
+        return field = Math.PI*Math.pow(radius,2);
     }
 
     @Override
