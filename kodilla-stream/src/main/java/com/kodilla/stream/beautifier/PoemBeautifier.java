@@ -6,8 +6,5 @@ public class PoemBeautifier {
         String decoratedText = poemDecorator.decorate(text);
         System.out.println("Decorated text: " + decoratedText);
     }
-    @Override
-    public String toString(){
-        return this.toString();
-    }
+
 }
