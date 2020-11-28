@@ -6,6 +6,7 @@ public class Square implements Shape {
 
     public Square(double side) {
         this.side = side;
+        field = Math.pow(side, 2);
     }
 
     public String getShapeName() {
@@ -13,7 +14,7 @@ public class Square implements Shape {
     }
 
     public double getField() {
-        return field = Math.pow(side, 2);
+        return field;
     }
 
     @Override

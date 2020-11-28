@@ -8,6 +8,7 @@ public class Triangle implements Shape {
     public Triangle(double base, double height) {
         this.base = base;
         this.height = height;
+        field = (base*height)/2;
     }
 
     public String getShapeName() {
@@ -15,7 +16,7 @@ public class Triangle implements Shape {
     }
 
     public double getField() {
-        return field  = (base*height)/2;
+        return field;
     }
     @Override
     public String toString() {

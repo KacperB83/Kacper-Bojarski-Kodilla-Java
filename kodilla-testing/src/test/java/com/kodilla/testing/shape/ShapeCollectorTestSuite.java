@@ -1,10 +1,6 @@
 package com.kodilla.testing.shape;
 
-import com.kodilla.testing.forum.ForumPost;
-import com.kodilla.testing.forum.ForumUser;
 import org.junit.jupiter.api.*;
-
-import java.util.List;
 
 public class ShapeCollectorTestSuite {
     private static int testCounter = 0;
@@ -97,6 +93,7 @@ public class ShapeCollectorTestSuite {
             //Then
             Assertions.assertEquals(10, retrievedFigure.getField());
         }
+
         @Test
         public void testGetCircleField () {
             //Given
