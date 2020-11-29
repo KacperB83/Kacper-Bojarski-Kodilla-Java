@@ -11,7 +11,11 @@ import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.lambda.Processor;
 import com.kodilla.stream.person.People;
 import com.kodilla.stream.reference.FunctionalCalculator;
+import com.kodilla.stream.world.Continent;
+import com.kodilla.stream.world.Country;
+import com.kodilla.stream.world.World;
 
+import java.math.BigDecimal;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -23,7 +27,12 @@ import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        Forum forumUsersDirectory = new Forum();
+        Continent continent = new Continent();
+        System.out.println(continent.getCountiesList());
+        World cont = new World();
+        System.out.println(cont.showContinents().size());
+
+        /*Forum forumUsersDirectory = new Forum();
         Map<Integer, ForumUser> theResultListOfUsers = forumUsersDirectory.getList().stream()
                 .filter(forumUser -> forumUser.getGender() == 'M')
                 //.filter(forumUser -> forumUser.getBirthDate() > )// LocalDate.now().minusYears())
@@ -33,10 +42,10 @@ public class StreamMain {
         System.out.println("# elements: " + theResultListOfUsers.size());
         theResultListOfUsers.entrySet().stream()
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
-                .forEach(System.out::println);
+                .forEach(System.out::println);*/
 
 
-/*        BookDirectory theBookDirectory = new BookDirectory();
+        /*BookDirectory theBookDirectory = new BookDirectory();
         String theResultStringOfBooks = theBookDirectory.getList().stream()
                 .filter(book -> book.getYearOfPublication() > 2005)
                 .map(Book::toString)
@@ -71,13 +80,14 @@ public class StreamMain {
         NumbersGenerator.generateEven(20);
 
 
+        */
         /*PoemBeautifier poemBeautifier = new PoemBeautifier();
         poemBeautifier.beautify("Text", (text -> "ABC "+text+" ABC"));
         poemBeautifier.beautify("Text", (text -> text.toUpperCase()));
         poemBeautifier.beautify("Text", (text -> "####--- "+text+" ---####"));
         poemBeautifier.beautify("Text", (text ->
                 text.charAt(0)+" "+ text.charAt(1)+" "+
-                text.charAt(2)+" "+ text.charAt(3)));
+                text.charAt(2)+" "+ text.charAt(3)));*/
        /* ExpressionExecutor expressionExecutor = new ExpressionExecutor();
         System.out.println("Calculating expressions with lambdas.");
         expressionExecutor.executeExpression(10, 5, (a, b) -> a + b);
