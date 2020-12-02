@@ -3,7 +3,6 @@ package com.kodilla.stream.world;
 import java.math.BigDecimal;
 
 public final class Country {
-    private Continent continent;
     private final String nameOfCountry;
     private final String continentOfCountry;
     private final long numberOfPeople;
@@ -14,10 +13,10 @@ public final class Country {
         this.numberOfPeople = numberOfPeople;
     }
 
-    public BigDecimal getPeopleQuantity() {
+    /*public BigDecimal getPeopleQuantity() {
         BigDecimal quantity = getPeopleQuantity();
         return quantity;
-    }
+    }*/
 
     public long getNumberOfPeople() {
         return numberOfPeople;

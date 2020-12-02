@@ -32,10 +32,13 @@ public class StreamMain {
         World cont = new World();
         System.out.println(cont.showContinents().size());
 
+       //System.out.println(cont.getPeopleQuantity());
+
+
         /*Forum forumUsersDirectory = new Forum();
         Map<Integer, ForumUser> theResultListOfUsers = forumUsersDirectory.getList().stream()
                 .filter(forumUser -> forumUser.getGender() == 'M')
-                //.filter(forumUser -> forumUser.getBirthDate() > )// LocalDate.now().minusYears())
+                .filter(forumUser -> forumUser.getBirthDate().isAfter(LocalDate.now().minusYears(20)))
                 .filter(forumUser -> forumUser.getNumberOfPosts() >= 1)
                 .collect(Collectors.toMap(ForumUser::getUserId, forumUser -> forumUser));
 
@@ -61,6 +64,8 @@ public class StreamMain {
         theResultMapOfBooks.entrySet().stream()
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .forEach(System.out::println);*/
+
+
        /* List<Book> theResultListOfBooks = theBookDirectory.getList().stream()
                 .filter(book -> book.getYearOfPublication() > 2005)
                 .collect(Collectors.toList());
@@ -68,6 +73,8 @@ public class StreamMain {
         System.out.println("# elements: " + theResultListOfBooks.size());
         theResultListOfBooks.stream()
                 .forEach(System.out::println);*/
+
+
        /* People.getList().stream()
                 .filter(s -> s.length()>11)
                 .map(s -> s.toUpperCase())
@@ -75,12 +82,12 @@ public class StreamMain {
                 .filter(s -> s.substring(0, 1).equals("M"))
                 .forEach(System.out::println);
 //                .map(String::toUpperCase)
-//                .forEach(s -> System.out.println(s));*/
-        /*System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
+//                .forEach(s -> System.out.println(s));
+        System.out.println("Using Stream to generate even numbers from 1 to 20");
+        NumbersGenerator.generateEven(20);*/
 
 
-        */
+
         /*PoemBeautifier poemBeautifier = new PoemBeautifier();
         poemBeautifier.beautify("Text", (text -> "ABC "+text+" ABC"));
         poemBeautifier.beautify("Text", (text -> text.toUpperCase()));
@@ -88,6 +95,8 @@ public class StreamMain {
         poemBeautifier.beautify("Text", (text ->
                 text.charAt(0)+" "+ text.charAt(1)+" "+
                 text.charAt(2)+" "+ text.charAt(3)));*/
+
+
        /* ExpressionExecutor expressionExecutor = new ExpressionExecutor();
         System.out.println("Calculating expressions with lambdas.");
         expressionExecutor.executeExpression(10, 5, (a, b) -> a + b);

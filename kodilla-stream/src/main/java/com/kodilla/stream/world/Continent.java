@@ -24,5 +24,12 @@ public final class Continent {
     public List<Country> getCountiesList() {
         return new ArrayList<>(listOfCountries);
     }
+   /* public List<String> getContinentOfCountry(List <Country> listOfCountries) {
+        List<String> continentsList = new ArrayList<>();
+        for(Country s: listOfCountries) {
+            continentsList.add(s.getContinentOfCountry());
+        }
+        return continentsList;
+    }*/
 
 }

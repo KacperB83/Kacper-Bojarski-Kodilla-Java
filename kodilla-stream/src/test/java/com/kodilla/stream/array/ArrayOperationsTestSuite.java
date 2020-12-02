@@ -11,10 +11,10 @@ public class ArrayOperationsTestSuite implements ArrayOperations {
         int[] numbers = {2, 4, 7, 9, 10, 20, 4};
 
         //When
-        Double averageNumber = ArrayOperations.getAverage(numbers);
+        double average = ArrayOperations.getAverage(numbers);
 
         //Then
         assertEquals(7, numbers.length);
-        //assertEquals(8, averageNumber);
+        //assertEquals(8.0, average);
     }
 }
