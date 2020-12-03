@@ -4,42 +4,37 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 public final class World {
-    private Continent continent;
-    private Country country;
+
     private final Set<String> continents = new HashSet<>();
 
-    public void addContinent(Country country, Continent continent) {
+    public World(Continent continent) {
 
-        continents.add(country.getContinentOfCountry());
-        /*List<Country> countries = continent.getCountiesList();
-        for (Country c: countries) {
-            continents.add(c.getContinentOfCountry());*/
-            System.out.println(country.getContinentOfCountry());
+        for (Country c : continent.getCountiesList()) {
+            String continentOfCountry = c.getContinentOfCountry();
+            continents.add(continentOfCountry);
+        }
     }
 
-    /*public Set<String> getContinentsSet() {
-        return continent.getCountiesList().stream()
-                .map(Country::getContinentOfCountry)
-                .collect(Collectors.toSet());
-    }*/
-    public Set<String> showContinents() {
-        System.out.println("This is only example of 3 continents:\n"+continents+"\n");
-        return new HashSet<>(continents);
+   public Set<String> showContinents() {
+        return getContinents();
     }
-    public BigDecimal getPeopleQuantity() {
+
+    public BigDecimal getPeopleQuantity(Continent continent) {
         BigDecimal quantity = new BigDecimal("0");
+        /*List<Country> people = continent.getCountiesList().stream()
+                .flatMap(Country::getPeopleQuantity)
+                .reduce(BigDecimal.ZERO, (sum, curent) -> sum = sum.add(curent));*/
         List<Country> people = continent.getCountiesList();
-            /*.stream()
-                .flatMap(Country::getNumberOfPeople)
-                .reduce(getPeopleQuantity(), quantity.add(Country::getNumberOfPeople))
-                .collect(toList());*/
         for(Country p: people)
-            quantity = quantity.add(BigDecimal.valueOf(p.getNumberOfPeople()));
+            quantity = quantity.add(p.getPeopleQuantity());
+
         return quantity;
     }
+
+    public Set<String> getContinents() {
+        return continents;
+    }
 }
+

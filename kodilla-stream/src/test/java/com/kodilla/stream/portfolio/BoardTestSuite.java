@@ -2,6 +2,7 @@ package com.kodilla.stream.portfolio;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -155,14 +156,17 @@ public class BoardTestSuite {
 
         long numberOfTasks = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
                 .count();
-        /*long allWorkingDays = project.getTaskLists().stream()
+
+        long allWorkingDays = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .map(Task::getCreated)
+                .mapToLong(task-> Duration.between(task.getCreated().atStartOfDay(), task.getDeadline().atStartOfDay()).toSeconds()/(3600*24))
                 .sum();
+
         //Then
-        assertEquals(30/3, allWorkingDays/numberOfTasks);*/
+        assertEquals(55/3, allWorkingDays/numberOfTasks);
     }
 
 

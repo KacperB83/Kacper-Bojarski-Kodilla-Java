@@ -28,11 +28,14 @@ import java.util.stream.Collectors;
 public class StreamMain {
     public static void main(String[] args) {
         Continent continent = new Continent();
-        System.out.println(continent.getCountiesList());
-        World cont = new World();
-        System.out.println(cont.showContinents().size());
 
-       //System.out.println(cont.getPeopleQuantity());
+        System.out.println(continent.getCountiesList());
+        System.out.println(continent.getAfrica());
+        World world = new World(continent);
+        System.out.println(world.showContinents());
+        System.out.println(world.showContinents().size());
+
+        System.out.println(world.getPeopleQuantity(continent));
 
 
         /*Forum forumUsersDirectory = new Forum();

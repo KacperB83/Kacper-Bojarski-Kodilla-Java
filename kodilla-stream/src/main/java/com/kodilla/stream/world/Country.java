@@ -13,10 +13,10 @@ public final class Country {
         this.numberOfPeople = numberOfPeople;
     }
 
-    /*public BigDecimal getPeopleQuantity() {
-        BigDecimal quantity = getPeopleQuantity();
+    public BigDecimal getPeopleQuantity() {
+        BigDecimal quantity = BigDecimal.valueOf(getNumberOfPeople());
         return quantity;
-    }*/
+    }
 
     public long getNumberOfPeople() {
         return numberOfPeople;
