@@ -27,16 +27,29 @@ import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        Continent continent = new Continent();
+        World world = new World();
+        Continent europe = world.addContinent(new Continent("Europe"));
+        europe.addCountry(new Country("Poland", new BigDecimal(38000000)));
+        europe.addCountry(new Country("France", new BigDecimal(66990000)));
+        europe.addCountry(new Country("Austria", new BigDecimal(8859000)));
+        europe.addCountry(new Country("Croatia", new BigDecimal(4058000)));
 
-        System.out.println(continent.getCountiesList());
-        System.out.println(continent.getAfrica());
-        World world = new World(continent);
-        System.out.println(world.showContinents());
-        System.out.println(world.showContinents().size());
+        Continent asia = world.addContinent(new Continent("Europe"));
+        asia.addCountry(new Country("China", new BigDecimal(1393000000)));
+        asia.addCountry(new Country("Russia", new BigDecimal(144500000)));
+        asia.addCountry(new Country("India", new BigDecimal(1353800000)));
+        asia.addCountry(new Country("Sri Lanka", new BigDecimal(21670000)));
 
-        System.out.println(world.getPeopleQuantity(continent));
+        Continent africa = world.addContinent(new Continent("Africa"));
+        africa.addCountry(new Country("RPA", new BigDecimal(57780000)));
+        africa.addCountry(new Country("Egypt", new BigDecimal(98420000)));
+        africa.addCountry(new Country("Nigeria", new BigDecimal(131850000)));
+        africa.addCountry(new Country("Ethiopia", new BigDecimal(75000000)));
 
+        System.out.println(asia.getListOfCountries());
+        System.out.println(world.getContinents().size());
+
+       // System.out.println(world.getPeopleQuantity());
 
         /*Forum forumUsersDirectory = new Forum();
         Map<Integer, ForumUser> theResultListOfUsers = forumUsersDirectory.getList().stream()

@@ -4,38 +4,34 @@ import java.math.BigDecimal;
 
 public final class Country {
     private final String nameOfCountry;
-    private final String continentOfCountry;
-    private final long numberOfPeople;
+    private final BigDecimal numberOfPeople;
 
-    public Country(final String nameOfCountry, final String continentOfCountry, final Long numberOfPeople) {
+    public Country(final String nameOfCountry, final BigDecimal numberOfPeople) {
         this.nameOfCountry = nameOfCountry;
-        this.continentOfCountry = continentOfCountry;
         this.numberOfPeople = numberOfPeople;
     }
 
-    public BigDecimal getPeopleQuantity() {
-        BigDecimal quantity = BigDecimal.valueOf(getNumberOfPeople());
-        return quantity;
-    }
-
-    public long getNumberOfPeople() {
-        return numberOfPeople;
+    public BigDecimal getNumberOfPeople() {
+        return new BigDecimal(String.valueOf(numberOfPeople));
     }
 
     public String getNameOfCountry() {
         return nameOfCountry;
     }
 
-    public String getContinentOfCountry() {
-        return continentOfCountry;
-    }
-
     @Override
     public String toString() {
         return "Country{" +
                 "nameOfCountry='" + nameOfCountry + '\'' +
-                ", continentOfCountry='" + continentOfCountry + '\'' +
                 ", numberOfPeople=" + numberOfPeople +
                 "}\n";
     }
+
+   /* @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Country country = (Country) o;
+        return Objects.equals(nameOfCountry, country.nameOfCountry);
+    }*/
 }
