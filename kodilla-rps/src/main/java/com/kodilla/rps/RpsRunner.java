@@ -26,12 +26,10 @@ public class RpsRunner {
         rps.add("PAPER!");
         rps.add("SCISSORS!");
         int computerDraw;
-        int playerDraw = 0;
+        String playerDraw = null;
         int computerWins = 0;
         int playerWins = 0;
         boolean end = false;
-        String endGame;
-        String restartGame;
 
         if (yesOrNo.equalsIgnoreCase("n")) {
             System.out.println("Ok, no problem. Come back next time.");
@@ -52,56 +50,63 @@ public class RpsRunner {
                             "x - to exit the game \n" +
                             "n - to restart the game");
                     computerDraw = random.nextInt(3)+1;
-                    playerDraw = scanner.nextInt();
-                    //String endGame = scanner.next();
-                    //String restartGame = scanner.next();
-                        /*if(!(playerDraw == 1) && !(playerDraw == 2) && !(playerDraw == 3)
-                            && !endGame.equals("x") && !restartGame.equals("n")) {
-                            System.out.println("Invalid choice. Please try again and type key 1, 2, 3, x or n.");
-                        }*/
-                      /*  if (endGame.equals("x")) {
-                            System.out.println("Then's for the game. Bye, bye!");
-                            break;
-                        }
-                        if (restartGame.equals("n")) {
-                            System.out.println("Restarting the game.");
-                            end = true;
-                        }*/
+                    playerDraw = scanner.next();
 
-                    if (computerDraw == playerDraw) {
-                        System.out.println("This is tie. Next round!");
+                    if(!playerDraw.equals("1") && !playerDraw.equals("2") && !playerDraw.equals("3")
+                            && !playerDraw.equals("x") && !playerDraw.equals("n") && playerDraw.equals(null)) {
+                        System.out.println("Invalid key type. Please try again and type key 1, 2, 3, x or n.");
+                    }
+                    if (playerDraw.equals("x")) {
+                        System.out.println("Thank's fo the game. Bye.");
                         end = true;
+                        break;
                     }
-                    if (computerDraw == 1 && playerDraw == 3) {
-                        System.out.println("Computer have won!");
+                    if (playerDraw.equals("n")) {
+                        System.out.println("Ok. Let's try once again.");
+
+                        break;
+                    }
+
+                    String draws = "You : " + rps.get(Integer.parseInt(playerDraw)-1) +
+                            " Computer: " + rps.get(computerDraw-1);
+
+                    System.out.println(draws);
+
+                    if (computerDraw == 1 && playerDraw.equals("3")) {
+                        System.out.println("Computer have won!\n");
                         computerWins++;
                     }
-                    if (computerDraw == 2 && playerDraw == 1) {
-                        System.out.println("Computer have won!");
+                    if (computerDraw == 2 && playerDraw.equals("1")) {
+                        System.out.println("Computer have won!\n");
                         computerWins++;
                     }
-                    if (computerDraw == 3 && playerDraw == 1) {
-                        System.out.println("Computer have won!");
+                    if (computerDraw == 3 && playerDraw.equals("2")) {
+                        System.out.println("Computer have won!\n");
                         computerWins++;
                     }
-                    if (playerDraw == 1 && computerDraw == 3) {
-                        System.out.println("You have won!");
+                    if (playerDraw.equals("1") && computerDraw == 3) {
+                        System.out.println("You have won!\n");
                         playerWins++;
                     }
-                    if (playerDraw == 2 && computerDraw == 1) {
-                        System.out.println("You have won!");
+                    if (playerDraw.equals("2") && computerDraw == 1) {
+                        System.out.println("You have won!\n");
                         playerWins++;
                     }
-                    if (playerDraw == 3 && computerDraw == 1) {
-                        System.out.println("You have won!");
+                    if (playerDraw.equals("3") && computerDraw == 2) {
+                        System.out.println("You have won!\n");
                         playerWins++;
+                    }
+                    int player = Integer.parseInt(playerDraw);
+                    if (player==computerDraw) {
+                        System.out.println("This is tie. Next round!\n");
                     }
                 }
+                end = true;
             }
-            end = true;
             System.out.println();
             System.out.println("Your wins: " + playerWins);
             System.out.println("Computer wins: " + computerWins);
+
             if(playerWins>computerWins){
                 System.out.println("Great! You have won the game!");
             } else if (playerWins==computerWins){
