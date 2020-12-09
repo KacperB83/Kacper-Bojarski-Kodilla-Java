@@ -1,15 +1,14 @@
 package com.kodilla.rps;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
-
 public class RpsRunner {
 
     public static void main(String[] args) {
+        Intro intro = new Intro();
+        intro.intro();
+    }
+}
 
-        Random random = new Random();
+        /*Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Hello! Would You like to play RPS game? Please write \"y\" (for Yes) or \"n\" (for No).");
@@ -117,3 +116,4 @@ public class RpsRunner {
         }
     }
 }
+*/
