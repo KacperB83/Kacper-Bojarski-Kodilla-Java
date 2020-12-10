@@ -12,23 +12,22 @@ public class RpsProgram {
     private Scanner scanner = new Scanner(System.in);
     private String yesOrNo = scanner.next();
 
-    private String playerName;
-    private int numberOfTries;
-
     private int computerDraw;
     private String playerDraw = null;
     private int computerWins = 0;
     private int playerWins = 0;
     private boolean end = false;
+    private int numberOfTries = intro.getNumberOfTries();
     private List<String> rps = new LinkedList<>();
 
-    public void runProgram(int numberOfTries) {
+    public void runProgram() {
+
         rps.add("ROCK!");
         rps.add("PAPER!");
         rps.add("SCISSORS!");
 
         while (!end) {
-            for(int i = 0; i < this.numberOfTries; i++) {
+            for(int i = 0; i < numberOfTries; i++) {
                 System.out.println("Please type: \n" +
                         "1 - for ROCK \n" +
                         "2 - for PAPER \n" +

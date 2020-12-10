@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FindFlight {
+
+
     public Map findFlight(Flight flight) throws RouteNotFoundException{
 
         Map<String, Boolean> flightMap = new HashMap<>();
         flightMap.put("Warsaw", true);
+
         flightMap.put("London", true);
         flightMap.put("Moscow", false);
         flightMap.put("Berlin", true);
