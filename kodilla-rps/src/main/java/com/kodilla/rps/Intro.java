@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Intro {
-    RpsProgram program;
+    //RpsProgram program;
     private Random random = new Random();
     private Scanner scanner = new Scanner(System.in);
 
@@ -31,9 +31,8 @@ public class Intro {
 
             System.out.println("Please type how many times You want to play?");
             numberOfTries = scanner.nextInt();
-
-            RpsProgram program = new RpsProgram();
-            program.runProgram();
         }
+        RpsProgram program = new RpsProgram();
+        program.runProgram();
     }
 }

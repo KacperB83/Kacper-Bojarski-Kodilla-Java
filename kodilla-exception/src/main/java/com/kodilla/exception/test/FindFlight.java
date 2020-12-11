@@ -1,34 +1,46 @@
 package com.kodilla.exception.test;
 
-import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class FindFlight {
 
+    private final Map<Airport, List<Airport>> flightMap;
 
-    public Map findFlight(Flight flight) throws RouteNotFoundException{
-
-        Map<String, Boolean> flightMap = new HashMap<>();
-        flightMap.put("Warsaw", true);
-
-        flightMap.put("London", true);
-        flightMap.put("Moscow", false);
-        flightMap.put("Berlin", true);
-        System.out.println(flightMap.size());
-
-        for(Map.Entry<String, Boolean> entry: flightMap.entrySet()) {
-            String destAirport = flight.getArrivalAirport();
-            if(destAirport.equals(entry.getKey())&& entry.getValue().equals(true)){
-                System.out.println("Your flight from " + flight.getDepartureAirport()+" to "+flight.getArrivalAirport()+ " is possible.");
-            }
-            if(destAirport.equals(entry.getKey())&& entry.getValue().equals(false)){
-                System.out.println("We are very sorry. Your flight from "
-                        + flight.getDepartureAirport()+" to "+flight.getArrivalAirport()+ " is not possible.");
-            }
-            if ((!destAirport.equals(entry.getKey())) || destAirport.equals(null)) {
-                throw new RouteNotFoundException();
-            }
-        }
-        return flightMap;
+    public FindFlight(Map<Airport, List<Airport>> flightMap) {
+        this.flightMap = flightMap;
     }
+
+    public boolean findFlight(Flight flight) {
+        final Airport departureAirport = flight.getDepartureAirport();
+        final Airport arrivalAirport = flight.getArrivalAirport();
+        if (flightMap.get(departureAirport) == null) {
+            return false;
+        }
+        if (flightMap.get(departureAirport).contains(arrivalAirport)) {
+            return true;
+        }
+        if (flightMap.get(arrivalAirport) != null) {
+            Map.Entry<Airport, List<Airport>> previous = null;
+            for (Map.Entry<Airport, List<Airport>> entry : flightMap.entrySet()) {
+                if (previous != null) {
+                    String p = String.valueOf(previous.getValue());
+                    Airport e = entry.getKey();
+                    System.out.println(p + " to " + e);
+                }
+                previous = entry;
+
+                /*Iterator<Map.Entry<Airport, List<Airport>>> it = flightMap.entrySet().iterator();
+                while (it.hasNext()*//* && entry.getValue().equals(it.next())*//*) {
+                    Airport key = entry.getKey();
+                    Airport value = (Airport) entry.getValue();
+                    System.out.println(key + " to " + value);*/
+                }
+
+            return true;
+        }
+        return flightMap.get(departureAirport).contains(arrivalAirport);
+    }
+
 }
