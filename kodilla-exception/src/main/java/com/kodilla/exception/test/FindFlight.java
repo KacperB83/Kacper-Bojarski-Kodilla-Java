@@ -22,14 +22,21 @@ public class FindFlight {
             return true;
         }
         if (flightMap.get(arrivalAirport) != null) {
-            Map.Entry<Airport, List<Airport>> previous = null;
+            Iterator<Map.Entry<Airport, List<Airport>>> it = flightMap.entrySet().iterator();
             for (Map.Entry<Airport, List<Airport>> entry : flightMap.entrySet()) {
-                if (previous != null) {
+                if(it.hasNext() && it.next().equals(entry.getValue())) {
+                    System.out.println(entry.getKey() + " to " + entry.getValue());
+                } else {
+                    System.out.println(entry.getKey() + " to " + entry.getValue());
+                }
+            /*Map.Entry<Airport, List<Airport>> previous = null;
+            for (Map.Entry<Airport, List<Airport>> entry : flightMap.entrySet()) {
+                if (previous != null && !previous.equals(arrivalAirport)) {
                     String p = String.valueOf(previous.getValue());
                     Airport e = entry.getKey();
                     System.out.println(p + " to " + e);
                 }
-                previous = entry;
+                previous = entry;*/
 
                 /*Iterator<Map.Entry<Airport, List<Airport>>> it = flightMap.entrySet().iterator();
                 while (it.hasNext()*//* && entry.getValue().equals(it.next())*//*) {
@@ -37,10 +44,9 @@ public class FindFlight {
                     Airport value = (Airport) entry.getValue();
                     System.out.println(key + " to " + value);*/
                 }
-
-            return true;
         }
-        return flightMap.get(departureAirport).contains(arrivalAirport);
+        return true;
+        //return flightMap.get(departureAirport).contains(arrivalAirport);
     }
 
 }

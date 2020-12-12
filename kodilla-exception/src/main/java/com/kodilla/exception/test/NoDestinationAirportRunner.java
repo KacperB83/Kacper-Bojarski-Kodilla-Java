@@ -21,7 +21,7 @@ public class NoDestinationAirportRunner {
 
         FindFlight fl = new FindFlight(flightMap);
 
-        boolean result = fl.findFlight(new Flight(warsaw , lisbon));
+        boolean result = fl.findFlight(new Flight(warsaw , frakfurt));
         System.out.println(result);
 
        if (result==false) {
