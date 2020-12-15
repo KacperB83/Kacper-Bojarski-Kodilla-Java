@@ -64,22 +64,22 @@ public class StreamMain {
                 .forEach(System.out::println);*/
 
 
-        /*BookDirectory theBookDirectory = new BookDirectory();
+        BookDirectory theBookDirectory = new BookDirectory();
         String theResultStringOfBooks = theBookDirectory.getList().stream()
                 .filter(book -> book.getYearOfPublication() > 2005)
                 .map(Book::toString)
                 .collect(Collectors.joining(",\n", "<<", ">>"));
 
-        System.out.println(theResultStringOfBooks);*/
+        System.out.println(theResultStringOfBooks);
 
-       /* Map<String, Book> theResultMapOfBooks = theBookDirectory.getList().stream()
+       Map<String, Book> theResultMapOfBooks = theBookDirectory.getList().stream()
                 .filter(book -> book.getYearOfPublication() > 2005)
                 .collect(Collectors.toMap(Book::getSignature, book -> book));
 
         System.out.println("# elements: " + theResultMapOfBooks.size());
         theResultMapOfBooks.entrySet().stream()
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
-                .forEach(System.out::println);*/
+                .forEach(System.out::println);
 
 
        /* List<Book> theResultListOfBooks = theBookDirectory.getList().stream()

@@ -31,9 +31,9 @@ public class WorldTestSuite {
         System.out.println(world.getContinents());
 
         //When & Then
-        String numberOfPeopleInTheWorld = world.getPeopleQuantity().toString();
+        BigDecimal numberOfPeopleInTheWorld = world.getPeopleQuantity();
 
-        assertEquals("3393927000", numberOfPeopleInTheWorld);
+        assertEquals(new BigDecimal(3393927000L), numberOfPeopleInTheWorld);
 
     }
 }

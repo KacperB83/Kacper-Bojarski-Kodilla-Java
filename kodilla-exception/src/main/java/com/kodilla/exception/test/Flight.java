@@ -1,19 +1,19 @@
 package com.kodilla.exception.test;
 
 public class Flight {
-    private String departureAirport;
-    private String arrivalAirport;
+    private Airport departureAirport;
+    private Airport arrivalAirport;
 
-    public Flight(String departureAirport, String arrivalAirport) {
+    public Flight(Airport departureAirport, Airport arrivalAirport) {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
     }
 
-    public String getDepartureAirport() {
+    public Airport getDepartureAirport() {
         return departureAirport;
     }
 
-    public String getArrivalAirport() {
+    public Airport getArrivalAirport() {
         return arrivalAirport;
     }
 }
