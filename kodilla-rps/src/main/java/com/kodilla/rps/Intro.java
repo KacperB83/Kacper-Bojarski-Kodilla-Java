@@ -1,19 +1,15 @@
 package com.kodilla.rps;
 
+import com.sun.jdi.IntegerValue;
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class Intro {
-    //RpsProgram program;
     private Random random = new Random();
     private Scanner scanner = new Scanner(System.in);
 
     private String playerName;
-    private int numberOfTries;
-
-    public int getNumberOfTries() {
-        return numberOfTries;
-    }
 
     public void intro() {
         System.out.println("Hello! Would You like to play RPS game? Please write \"y\" (for Yes) or \"n\" (for No).");
@@ -30,9 +26,14 @@ public class Intro {
             System.out.println("Hello " + playerName);
 
             System.out.println("Please type how many times You want to play?");
-            numberOfTries = scanner.nextInt();
+            int numberOfTries = scanner.nextInt();
+            while (!(numberOfTries > 0)) {
+                System.out.println("\nInvalid choice. Please try again and type some number.");
+                numberOfTries = scanner.nextInt();
+            }
+            RpsProgram program = new RpsProgram();
+            program.runProgram(numberOfTries);
+
         }
-        RpsProgram program = new RpsProgram();
-        program.runProgram();
     }
 }

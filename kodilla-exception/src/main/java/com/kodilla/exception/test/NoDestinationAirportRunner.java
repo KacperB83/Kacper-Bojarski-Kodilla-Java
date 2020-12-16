@@ -8,20 +8,20 @@ public class NoDestinationAirportRunner {
     public static void main(String[] args) throws RouteNotFoundException {
 
         final HashMap<Airport, List<Airport>> flightMap = new HashMap<>();
-        final Airport frakfurt = new Airport("Frankfurt");
+        final Airport frankfurt = new Airport("Frankfurt");
         final Airport berlin = new Airport("Berlin");
         final Airport warsaw = new Airport("Warsaw");
         final Airport lisbon = new Airport("Lisbon");
         final Airport newYork = new Airport("New York");
 
         flightMap.put(warsaw, Arrays.asList(berlin));
-        flightMap.put(berlin, Arrays.asList(frakfurt));
-        flightMap.put(frakfurt, Arrays.asList(lisbon));
+        flightMap.put(berlin, Arrays.asList(frankfurt));
+        flightMap.put(frankfurt, Arrays.asList(lisbon));
         flightMap.put(lisbon, Arrays.asList(newYork));
 
         FindFlight fl = new FindFlight(flightMap);
 
-        boolean result = fl.findFlight(new Flight(warsaw , frakfurt));
+        boolean result = fl.findFlight(new Flight(warsaw , newYork));
         System.out.println(result);
 
        if (result==false) {

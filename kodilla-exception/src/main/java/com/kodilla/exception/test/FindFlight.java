@@ -15,38 +15,30 @@ public class FindFlight {
     public boolean findFlight(Flight flight) {
         final Airport departureAirport = flight.getDepartureAirport();
         final Airport arrivalAirport = flight.getArrivalAirport();
+
         if (flightMap.get(departureAirport) == null) {
             return false;
         }
         if (flightMap.get(departureAirport).contains(arrivalAirport)) {
+            System.out.println("Flight from " + departureAirport + " to " + arrivalAirport);
             return true;
         }
-        if (flightMap.get(arrivalAirport) != null) {
-            Iterator<Map.Entry<Airport, List<Airport>>> it = flightMap.entrySet().iterator();
-            for (Map.Entry<Airport, List<Airport>> entry : flightMap.entrySet()) {
-                if(it.hasNext() && it.next().equals(entry.getValue())) {
-                    System.out.println(entry.getKey() + " to " + entry.getValue());
-                } else {
-                    System.out.println(entry.getKey() + " to " + entry.getValue());
-                }
-            /*Map.Entry<Airport, List<Airport>> previous = null;
-            for (Map.Entry<Airport, List<Airport>> entry : flightMap.entrySet()) {
-                if (previous != null && !previous.equals(arrivalAirport)) {
-                    String p = String.valueOf(previous.getValue());
-                    Airport e = entry.getKey();
-                    System.out.println(p + " to " + e);
-                }
-                previous = entry;*/
+        else if (flightMap.keySet().contains(arrivalAirport) || flightMap.containsValue(arrivalAirport)) {
+            Iterator<Map.Entry<Airport, List<Airport>>> i = flightMap.entrySet().iterator();
+            while (i.hasNext()) {
+                Airport key = i.next().getKey();
+                for (Map.Entry<Airport, List<Airport>> e : flightMap.entrySet()) {
 
-                /*Iterator<Map.Entry<Airport, List<Airport>>> it = flightMap.entrySet().iterator();
-                while (it.hasNext()*//* && entry.getValue().equals(it.next())*//*) {
-                    Airport key = entry.getKey();
-                    Airport value = (Airport) entry.getValue();
-                    System.out.println(key + " to " + value);*/
+                    if (e.getValue().contains(key) && !e.getValue().contains(arrivalAirport)) {
+                        System.out.println("Flight from " + e.getKey() + " to " + e.getValue());
+
+                    } else if (e.getValue().contains(arrivalAirport)) {
+                        System.out.println("Flight from " + e.getKey() + " to " + e.getValue());
+                    }
                 }
+            }
         }
         return true;
-        //return flightMap.get(departureAirport).contains(arrivalAirport);
     }
-
 }
+
