@@ -7,39 +7,38 @@ import java.util.Scanner;
 
 public class RpsProgram {
 
-    Intro intro;
     private Random random = new Random();
     private Scanner scanner = new Scanner(System.in);
-    private String yesOrNo = scanner.next();
 
     private int computerDraw;
     private String playerDraw = null;
     private int computerWins = 0;
     private int playerWins = 0;
     private boolean end = false;
-    private int numberOfTries = intro.getNumberOfTries();
     private List<String> rps = new LinkedList<>();
 
-    public void runProgram() {
+    public void runProgram(int numberOfTries) {
 
         rps.add("ROCK!");
         rps.add("PAPER!");
         rps.add("SCISSORS!");
 
         while (!end) {
-            for(int i = 0; i < numberOfTries; i++) {
+            for (int i = 0; i < numberOfTries; i++) {
                 System.out.println("Please type: \n" +
                         "1 - for ROCK \n" +
                         "2 - for PAPER \n" +
                         "3 - for SCISSORS \n" +
                         "x - to exit the game \n" +
                         "n - to restart the game");
-                computerDraw = random.nextInt(3)+1;
+
+                computerDraw = random.nextInt(3) + 1;
                 playerDraw = scanner.next();
 
-                if(!playerDraw.equals("1") && !playerDraw.equals("2") && !playerDraw.equals("3")
-                        && !playerDraw.equals("x") && !playerDraw.equals("n") && playerDraw.equals(null)) {
-                    System.out.println("Invalid key type. Please try again and type key 1, 2, 3, x or n.");
+                while (!playerDraw.equalsIgnoreCase("1") && !playerDraw.equalsIgnoreCase("2") && !playerDraw.equalsIgnoreCase("3")
+                        && !playerDraw.equalsIgnoreCase("x") && !playerDraw.equalsIgnoreCase("n")) {
+                        System.out.println("Invalid key type. Please try again and type key 1, 2, 3, x or n.");
+                        playerDraw = scanner.next();
                 }
                 if (playerDraw.equals("x")) {
                     System.out.println("Thank's fo the game. Bye.");
@@ -48,11 +47,12 @@ public class RpsProgram {
                 }
                 if (playerDraw.equals("n")) {
                     System.out.println("Ok. Let's try once again.");
+                    Intro intro = new Intro();
                     intro.intro();
                 }
 
-                String draws = "You : " + rps.get(Integer.parseInt(playerDraw)-1) +
-                        " Computer: " + rps.get(computerDraw-1);
+                String draws = "You : " + rps.get(Integer.parseInt(playerDraw) - 1) +
+                        " Computer: " + rps.get(computerDraw - 1);
 
                 System.out.println(draws);
 
@@ -81,7 +81,7 @@ public class RpsProgram {
                     playerWins++;
                 }
                 int player = Integer.parseInt(playerDraw);
-                if (player==computerDraw) {
+                if (player == computerDraw) {
                     System.out.println("This is tie. Next round!\n");
                 }
             }
@@ -91,12 +91,27 @@ public class RpsProgram {
         System.out.println("Your wins: " + playerWins);
         System.out.println("Computer wins: " + computerWins);
 
-        if(playerWins>computerWins){
+        if (playerWins > computerWins) {
             System.out.println("Great! You have won the game!");
-        } else if (playerWins==computerWins){
+        } else if (playerWins == computerWins) {
             System.out.println("This is tie. Let's play again");
         } else {
             System.out.println("You have bad luck. Computer have won.");
+        }
+        System.out.println("Would You like to play again? Please write \"y\" (for Yes) or \"n\" (for No).");
+        String yesOrNo = scanner.next();
+
+        while (!yesOrNo.equalsIgnoreCase("y") && !yesOrNo.equalsIgnoreCase("n")) {
+            System.out.println("\nInvalid choice. Please try again and type y or n key.");
+            yesOrNo = scanner.next();
+        }
+        if (yesOrNo.equalsIgnoreCase("n")) {
+            System.out.println("Ok, no problem. Come back next time.");
+        } else {
+            System.out.println("Ok. Let's try once again.");
+            Intro intro = new Intro();
+            intro.intro();
+
         }
     }
 }
