@@ -1,7 +1,5 @@
 package com.kodilla.rps;
 
-import com.sun.jdi.IntegerValue;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -26,11 +24,19 @@ public class Intro {
             System.out.println("Hello " + playerName);
 
             System.out.println("Please type how many times You want to play?");
-            int numberOfTries = scanner.nextInt();
-            while (!(numberOfTries > 0)) {
-                System.out.println("\nInvalid choice. Please try again and type some number.");
-                numberOfTries = scanner.nextInt();
+            boolean typeNumber = false;
+            int numberOfTries = 0;
+
+            while (!typeNumber) {
+                String result = scanner.nextLine();
+                try {
+                    numberOfTries = Integer.parseInt(result);
+                    typeNumber = true;
+                } catch (NumberFormatException numberFormatException) {
+                    System.out.println("Please type some number.");
+                }
             }
+
             RpsProgram program = new RpsProgram();
             program.runProgram(numberOfTries);
 
