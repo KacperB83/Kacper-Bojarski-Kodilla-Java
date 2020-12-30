@@ -23,11 +23,13 @@ import java.time.Year;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        World world = new World();
+
+     /* World world = new World();
         Continent europe = world.addContinent(new Continent("Europe"));
         europe.addCountry(new Country("Poland", new BigDecimal(38000000)));
         europe.addCountry(new Country("France", new BigDecimal(66990000)));
@@ -47,7 +49,7 @@ public class StreamMain {
         africa.addCountry(new Country("Ethiopia", new BigDecimal(75000000)));
 
         System.out.println(asia.getListOfCountries());
-        System.out.println(world.getContinents().size());
+        System.out.println(world.getContinents().size());*/
 
        // System.out.println(world.getPeopleQuantity());
 
@@ -64,7 +66,7 @@ public class StreamMain {
                 .forEach(System.out::println);*/
 
 
-        BookDirectory theBookDirectory = new BookDirectory();
+      /*  BookDirectory theBookDirectory = new BookDirectory();
         String theResultStringOfBooks = theBookDirectory.getList().stream()
                 .filter(book -> book.getYearOfPublication() > 2005)
                 .map(Book::toString)
@@ -79,7 +81,7 @@ public class StreamMain {
         System.out.println("# elements: " + theResultMapOfBooks.size());
         theResultMapOfBooks.entrySet().stream()
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
-                .forEach(System.out::println);
+                .forEach(System.out::println);*/
 
 
        /* List<Book> theResultListOfBooks = theBookDirectory.getList().stream()

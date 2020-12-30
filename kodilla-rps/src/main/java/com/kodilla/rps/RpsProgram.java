@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import static com.kodilla.rps.Rps.Result.*;
+
 public class RpsProgram {
 
     private Random random = new Random();
@@ -19,9 +21,9 @@ public class RpsProgram {
 
     public void runProgram(int numberOfTries) {
 
-        rps.add("ROCK!");
-        rps.add("PAPER!");
-        rps.add("SCISSORS!");
+        rps.add("ROCK");
+        rps.add("PAPER");
+        rps.add("SCISSORS");
 
         while (!end) {
             for (int i = 0; i < numberOfTries; i++) {
@@ -41,7 +43,7 @@ public class RpsProgram {
                         playerDraw = scanner.next();
                 }
                 if (playerDraw.equals("x")) {
-                    System.out.println("Thank's fo the game. Bye.");
+                    System.out.println("Thank's fo the game.");
                     end = true;
                     break;
                 }
@@ -52,11 +54,30 @@ public class RpsProgram {
                 }
 
                 String draws = "You : " + rps.get(Integer.parseInt(playerDraw) - 1) +
-                        " Computer: " + rps.get(computerDraw - 1);
+                        " Computer : " + rps.get(computerDraw - 1);
 
                 System.out.println(draws);
 
-                if (computerDraw == 1 && playerDraw.equals("3")) {
+                Rps.Move playerMove = Rps.Move.valueOf(rps.get(Integer.parseInt(playerDraw) - 1));
+                Rps.Move computerMove = Rps.Move.valueOf(rps.get(computerDraw - 1));
+
+                Rps rpsGame = new Rps();
+                Rps.GameRound gameRound = new Rps.GameRound(playerMove, computerMove);
+
+                Rps.Result result = rpsGame.evaluateWinner(gameRound);
+
+                if(result.equals(COMPUTER_WIN)) {
+                    System.out.println(result);
+                    computerWins++;
+                }
+                if(result.equals(PLAYER_WIN)){
+                    System.out.println(result);
+                    playerWins++;
+                }
+                if(result.equals(TIE)) {
+                    System.out.println(result);
+                }
+                /*if (computerDraw == 1 && playerDraw.equals("3")) {
                     System.out.println("Computer have won!\n");
                     computerWins++;
                 }
@@ -83,7 +104,7 @@ public class RpsProgram {
                 int player = Integer.parseInt(playerDraw);
                 if (player == computerDraw) {
                     System.out.println("This is tie. Next round!\n");
-                }
+                }*/
             }
             end = true;
         }
@@ -96,7 +117,7 @@ public class RpsProgram {
         } else if (playerWins == computerWins) {
             System.out.println("This is tie. Let's play again");
         } else {
-            System.out.println("You have bad luck. Computer have won.");
+            System.out.println("Computer have won.");
         }
         System.out.println("Would You like to play again? Please write \"y\" (for Yes) or \"n\" (for No).");
         String yesOrNo = scanner.next();
@@ -106,9 +127,9 @@ public class RpsProgram {
             yesOrNo = scanner.next();
         }
         if (yesOrNo.equalsIgnoreCase("n")) {
-            System.out.println("Ok, no problem. Come back next time.");
+            System.out.println("Thank's for the game.");
         } else {
-            System.out.println("Ok. Let's try once again.");
+            System.out.println("Let's try once again.");
             Intro intro = new Intro();
             intro.intro();
 

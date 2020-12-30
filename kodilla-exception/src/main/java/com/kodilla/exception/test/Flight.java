@@ -1,19 +1,19 @@
 package com.kodilla.exception.test;
 
 public class Flight {
-    private Airport departureAirport;
-    private Airport arrivalAirport;
+    private Airport from;
+    private Airport to;
 
     public Flight(Airport departureAirport, Airport arrivalAirport) {
-        this.departureAirport = departureAirport;
-        this.arrivalAirport = arrivalAirport;
+        this.from = from;
+        this.to = to;
     }
 
-    public Airport getDepartureAirport() {
-        return departureAirport;
+    public Airport getFrom() {
+        return from;
     }
 
-    public Airport getArrivalAirport() {
-        return arrivalAirport;
+    public Airport getTo() {
+        return to;
     }
 }
