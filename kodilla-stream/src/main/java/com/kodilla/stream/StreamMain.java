@@ -14,6 +14,7 @@ import com.kodilla.stream.reference.FunctionalCalculator;
 import com.kodilla.stream.world.Continent;
 import com.kodilla.stream.world.Country;
 import com.kodilla.stream.world.World;
+import com.sun.jdi.Value;
 
 import java.math.BigDecimal;
 import java.sql.Time;
@@ -105,13 +106,13 @@ public class StreamMain {
         NumbersGenerator.generateEven(20);*/
 
 
-
-        /*PoemBeautifier poemBeautifier = new PoemBeautifier();
+        PoemBeautifier poemBeautifier = new PoemBeautifier();
         poemBeautifier.beautify("Text", (text -> "ABC "+text+" ABC"));
         poemBeautifier.beautify("Text", (text -> text.toUpperCase()));
         poemBeautifier.beautify("Text", (text -> "####--- "+text+" ---####"));
-        poemBeautifier.beautify("Text", (text ->
-                text.charAt(0)+" "+ text.charAt(1)+" "+
+        poemBeautifier.beautify("Text ze spacjami", (text -> text.replaceAll(".", "$0 ")));
+
+                /*text.charAt(0)+" "+ text.charAt(1)+" "+
                 text.charAt(2)+" "+ text.charAt(3)));*/
 
 
