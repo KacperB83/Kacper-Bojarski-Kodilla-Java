@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Rps {
-
     public static Map<GameRound, Result> MAP = new HashMap<>();
 
     static {

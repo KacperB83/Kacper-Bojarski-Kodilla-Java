@@ -12,6 +12,7 @@ public class Intro {
     public void intro() {
         System.out.println("Hello! Would You like to play RPS game? Please write \"y\" (for Yes) or \"n\" (for No).");
         String yesOrNo = scanner.next();
+
         while (!yesOrNo.equalsIgnoreCase("y") && !yesOrNo.equalsIgnoreCase("n")) {
             System.out.println("\nInvalid choice. Please try again and type y or n key.");
             yesOrNo = scanner.next();
@@ -28,7 +29,7 @@ public class Intro {
             int numberOfTries = 0;
 
             while (!typeNumber) {
-                String result = scanner.nextLine();
+                String result = scanner.next();
                 try {
                     numberOfTries = Integer.parseInt(result);
                     typeNumber = true;
@@ -36,10 +37,8 @@ public class Intro {
                     System.out.println("Please type some number.");
                 }
             }
-
             RpsProgram program = new RpsProgram();
             program.runProgram(numberOfTries);
-
         }
     }
 }
