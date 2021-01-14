@@ -1,7 +1,6 @@
 package com.kodilla.stream.forumuser;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public final class ForumUser {
     private  final int userId;

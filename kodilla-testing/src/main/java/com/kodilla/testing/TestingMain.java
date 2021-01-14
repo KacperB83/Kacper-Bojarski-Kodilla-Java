@@ -1,21 +1,21 @@
 package com.kodilla.testing;
 
-import com.kodilla.testing.collection.OddNumbersExterminator;
-import com.kodilla.testing.forum.statistics.CalculateStatistics;
-import com.kodilla.testing.forum.statistics.Statistics;
-import com.kodilla.testing.shape.*;
-import com.kodilla.testing.user.Calculator;
-import com.kodilla.testing.weather.stub.Temperatures;
-import com.kodilla.testing.weather.stub.WeatherForecast;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.kodilla.testing.calculator.Calculator;
 
 public class TestingMain {
     public static void main(String[] args) {
 
-       /* ShapeCollector shapeCollector = new ShapeCollector();
+       /* SimpleUser simpleUser = new SimpleUser("theForumUser");
+
+        String result = simpleUser.getUsername();
+
+        if (result.equals("theForumUser")){
+            System.out.println("test ok");
+        } else {
+            System.out.println("Error!");
+        }*/
+
+        /*ShapeCollector shapeCollector = new ShapeCollector();
         shapeCollector.addFigure(new Circle(5));
         shapeCollector.addFigure(new Square(5));
         shapeCollector.addFigure(new Triangle(5, 5));
@@ -23,10 +23,9 @@ public class TestingMain {
         System.out.println();
         shapeCollector.getFigure(0);
         System.out.println();
-        shapeCollector.removeFigure(shapeCollector.getFigure(1));
+        shapeCollector.removeFigure(shapeCollector.getFigure(1));*/
 
-
-       /* OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+        /*       OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         List<Integer> numbers = new ArrayList<>();
         numbers.add(1);
         numbers.add(24);
@@ -38,9 +37,9 @@ public class TestingMain {
         numbers.add(3);
 
         System.out.println(numbers);
-        System.out.println(oddNumbersExterminator.exterminate(numbers));
+        System.out.println(oddNumbersExterminator.exterminate(numbers));*/
 
-        System.out.println("Test - pierwszy test jednostkowy:");
+        /*System.out.println("Test - pierwszy test jednostkowy:");
         Calculator calculator = new Calculator();
 
         int addResult = calculator.add(2,4);

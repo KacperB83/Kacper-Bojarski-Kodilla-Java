@@ -4,7 +4,7 @@ import com.kodilla.testing.user.SimpleUser;
 import org.junit.jupiter.api.*;
 
 @DisplayName ("Forum test suite")
-class ForumTestSuite {
+public class ForumTestSuite {
     @BeforeEach
     public void before() {
         System.out.println("Test case: begin");
