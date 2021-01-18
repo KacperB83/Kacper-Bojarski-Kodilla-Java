@@ -6,4 +6,15 @@ public class Product {
     public Product(String nameOfProduct) {
         this.nameOfProduct = nameOfProduct;
     }
+
+    public String getNameOfProduct() {
+        return nameOfProduct;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "nameOfProduct='" + nameOfProduct + '\'' +
+                '}';
+    }
 }

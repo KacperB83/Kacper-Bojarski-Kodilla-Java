@@ -11,7 +11,7 @@ public class Order {
     public User getUser() {
         return user;
     }
-    public boolean isCanBeOrdered() {
+    public boolean canBeOrdered() {
         return canBeOrdered;
     }
 }
