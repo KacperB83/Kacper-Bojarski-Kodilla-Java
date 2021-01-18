@@ -7,7 +7,7 @@ public class ProductOrderService {
     private OrderRepository orderRepository;
     private ProductRepository productRepository;
 
-    public ProductOrderService(final InformationService informationService, final OrderService orderService, final OrderRepository orderRepository) {
+    public ProductOrderService(final InformationService informationService, final OrderService orderService, final OrderRepository orderRepository, final ProductRepository productRepository) {
         this.informationService = informationService;
         this.orderService = orderService;
         this.orderRepository = orderRepository;
@@ -16,7 +16,6 @@ public class ProductOrderService {
 
     public Order process(final OrderRequest orderRequest) {
         boolean productAvailable = productRepository.checkAvailability(orderRequest.getProduct());
-
         boolean canBeOrdered = orderService.order(orderRequest.getUser(), orderRequest.getProduct());
         if (canBeOrdered && productAvailable) {
             informationService.inform(orderRequest.getUser());
