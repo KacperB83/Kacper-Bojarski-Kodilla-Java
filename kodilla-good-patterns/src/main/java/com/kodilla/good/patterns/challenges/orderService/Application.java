@@ -8,6 +8,5 @@ public class Application {
         ProductOrderService productOrderService = new ProductOrderService(
                 new MailService(), new PhoneOrderService(), new PhoneOrderRepositiry());
         productOrderService.process(orderRequest);
-
     }
 }
