@@ -16,11 +16,11 @@ public class OrderService {
         boolean checkRepository = supplierRepository.checkAvailability();
         if(checkRepository) {
             informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(), supplier.getNameOfSupplier(), orderRequest.getNameOfProduct(), orderRequest.getQuantity());
-            return new Order(orderRequest.getUser(), supplier.getNameOfSupplier(),  true);
+            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getListOfProducts());
+            return new Order(orderRequest.getUser(), supplier.getNameOfSupplier(), orderRequest.getListOfProducts(),true);
 
         } else {
-            return new Order(orderRequest.getUser(), supplier.getNameOfSupplier(), false);
+            return new Order(orderRequest.getUser(), supplier.getNameOfSupplier(), orderRequest.getListOfProducts(), false);
         }
     }
 }

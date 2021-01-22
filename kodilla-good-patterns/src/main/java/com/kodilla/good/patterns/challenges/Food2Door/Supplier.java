@@ -1,25 +1,24 @@
 package com.kodilla.good.patterns.challenges.Food2Door;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Supplier {
     private OrderRequest orderRequest;
     private String nameOfSupplier;
-    private Map<String , Integer> products = new HashMap<>();
+    private List<Product> products = new ArrayList<>();
 
     public Supplier(String nameOfSupplier) {
         this.nameOfSupplier = nameOfSupplier;
     }
-    public void addProduct(String nameOfProduct, Integer quantity) {
-        if(products.get(nameOfProduct)==null) {
-            products.put(nameOfProduct, quantity);
+
+    public void addProduct(Product product) {
+        if(!products.contains(product.getNameOfProduct())) {
+            products.add(product);
         }
     }
     public boolean canBeOrdered() {
-        for(Map.Entry<String, Integer> entry: products.entrySet()) {
-            if (entry.getKey().equals(orderRequest.getNameOfProduct())&&
-            entry.getValue()> orderRequest.getQuantity()) {
+        for(Product p: products) {
+            if (orderRequest.getListOfProducts().contains(p.getNameOfProduct())) {
                 return true;
             }
         }
@@ -28,5 +27,4 @@ public class Supplier {
     public String getNameOfSupplier(){
         return nameOfSupplier;
     }
-
 }
