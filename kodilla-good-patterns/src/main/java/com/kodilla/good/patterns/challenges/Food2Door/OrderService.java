@@ -17,10 +17,11 @@ public class OrderService {
         if(checkRepository) {
             informationService.inform(orderRequest.getUser());
             orderRepository.createOrder(orderRequest.getUser(), orderRequest.getListOfProducts());
-            return new Order(orderRequest.getUser(), supplier.getNameOfSupplier(), orderRequest.getListOfProducts(),true);
+            //return new Order(orderRequest.getUser(), supplier.getNameOfSupplier(), orderRequest.getListOfProducts(),true);
 
         } else {
-            return new Order(orderRequest.getUser(), supplier.getNameOfSupplier(), orderRequest.getListOfProducts(), false);
+            //return new Order(orderRequest.getUser(), supplier.getNameOfSupplier(), orderRequest.getListOfProducts(), false);
         }
+        return null;
     }
 }

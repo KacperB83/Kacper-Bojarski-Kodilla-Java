@@ -2,35 +2,36 @@ package com.kodilla.good.patterns.challenges.orderService;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class ProductRepository {
+    private Map<Product, Integer> products;
+    private Map<Product, Integer> orderedProducts = new HashMap<>();
 
-    private Map<Product, Integer> products = new HashMap<>();
-
-    public ProductRepository (){
-        products.put(new Product("Samsung"), 5);
-        products.put(new Product("LG"), 3);
-        products.put(new Product("Iphone"), 5);
-        products.put(new Product("Sony"), 5);
+    public ProductRepository (Map<Product, Integer> products){
+        this.products = products;
     }
-    public boolean checkAvailability(Product product) {
-        if(products.containsKey(product.getNameOfProduct())) {
-            return true;
+
+    public boolean checkAvailability(OrderRequest orderRequest) {
+
+            for (Map.Entry<Product, Integer> orderMap : orderRequest.getProducts().entrySet()) {
+                if (products.containsKey(orderMap.getKey())) {
+                    if (products.get(orderMap.getKey()).intValue() >= orderMap.getValue()) {
+                        System.out.println("This " + orderMap.getKey() + " can be ordered.");
+                        orderedProducts.put((orderMap.getKey()), orderMap.getValue());
+                        continue;
+
+                    } else {
+                        System.out.println("We do not have enough items of this product.");
+                    }
+                } else {
+                    System.out.println("Sorry, we do not have this product in our stock.");
+                }
         }
-        return false;
+        return true;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ProductRepository that = (ProductRepository) o;
-        return Objects.equals(products, that.products);
+    public Map<Product, Integer> getOrderedProducts() {
+        return orderedProducts;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(products);
-    }
 }

@@ -1,19 +1,25 @@
 package com.kodilla.good.patterns.challenges.orderService;
 
+import java.util.Map;
+
 public class OrderRequest {
     private User user;
-    private Product product;
+    private Map<Product, Integer> products;
 
-    public OrderRequest(User user, Product product) {
+    public OrderRequest(User user, Map<Product, Integer> products) {
         this.user = user;
-        this.product = product;
+        this.products = products;
     }
 
     public User getUser() {
         return user;
     }
 
-    public Product getProduct() {
-        return product;
+    public Map<Product, Integer> getProducts() {
+        return products;
+    }
+
+    public int getQuantity(Product product) {
+        return products.get(product).intValue();
     }
 }

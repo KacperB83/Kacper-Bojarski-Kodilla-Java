@@ -4,15 +4,13 @@ import java.util.List;
 
 public class Order {
     private User user;
-    private String supplierName ;
+    private String supplierName;
     private List<Product> products;
-    private boolean canBeOrdered;
 
-    public Order(User user, String supplierName, List<Product> products, boolean canBeOrdered) {
+    public Order(User user, String supplierName, List<Product> products) {
         this.user = user;
         this.supplierName = supplierName;
         this.products = products;
-        this.canBeOrdered = canBeOrdered;
     }
     public User getUser() {
         return user;
@@ -22,7 +20,4 @@ public class Order {
         return supplierName;
     }
 
-    public boolean canBeOrdered() {
-        return canBeOrdered;
-    }
 }
