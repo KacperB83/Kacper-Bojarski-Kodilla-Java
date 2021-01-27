@@ -1,5 +1,6 @@
 package com.kodilla.good.patterns.challenges.orderService;
 
+import java.util.Map;
 
 public class ProductOrderService {
     private InformationService informationService;
@@ -7,7 +8,10 @@ public class ProductOrderService {
     private OrderRepository orderRepository;
     private ProductRepository productRepository;
 
-    public ProductOrderService(final InformationService informationService, final OrderService orderService, final OrderRepository orderRepository, final ProductRepository productRepository) {
+    public ProductOrderService(final ProductRepository productRepository,
+                               final InformationService informationService,
+                               final OrderService orderService,
+                               final OrderRepository orderRepository) {
         this.informationService = informationService;
         this.orderService = orderService;
         this.orderRepository = orderRepository;
@@ -15,15 +19,17 @@ public class ProductOrderService {
     }
 
     public Order process(final OrderRequest orderRequest) {
-        boolean productAvailable = productRepository.checkAvailability(orderRequest.getProduct());
-        boolean canBeOrdered = orderService.order(orderRequest.getUser(), orderRequest.getProduct());
-        if (canBeOrdered && productAvailable) {
-            informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getProduct());
-            return new Order(orderRequest.getUser(), true);
 
-        } else {
-            return new Order(orderRequest.getUser(), false);
+            boolean productAvailable = productRepository.checkAvailability(orderRequest);
+            if (productAvailable) {
+                informationService.inform(orderRequest.getUser());
+                orderRepository.createOrder(orderRequest.getUser(), productRepository.getOrderedProducts());
+
+                return new Order(orderRequest.getUser(), productRepository.getOrderedProducts());
+            } else {
+                System.out.println("We can't realize Your order.");
+                return null;
+            }
         }
-    }
+
 }

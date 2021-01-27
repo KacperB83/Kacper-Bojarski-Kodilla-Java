@@ -1,35 +1,25 @@
 package com.kodilla.good.patterns.challenges.Food2Door;
 
-import java.util.Objects;
-
 public class Product {
     private String nameOfProduct;
-    private int quantity;
+    private String nameOfProducer;
+    private int price;
 
-    public Product(String nameOfProduct, int quantity) {
+    public Product(String nameOfProduct, String nameOfProducer, int price) {
         this.nameOfProduct = nameOfProduct;
-        this.quantity = quantity;
+        this.nameOfProducer = nameOfProducer;
+        this.price = price;
     }
 
     public String getNameOfProduct() {
         return nameOfProduct;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getNameOfProducer() {
+        return nameOfProducer;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return quantity == product.quantity &&
-                Objects.equals(nameOfProduct, product.nameOfProduct);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nameOfProduct, quantity);
+    public int getPrice() {
+        return price;
     }
 }

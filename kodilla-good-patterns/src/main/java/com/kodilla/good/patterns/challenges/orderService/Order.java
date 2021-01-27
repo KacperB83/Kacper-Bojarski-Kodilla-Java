@@ -1,17 +1,18 @@
 package com.kodilla.good.patterns.challenges.orderService;
 
+import java.util.Map;
+
 public class Order {
     private User user;
-    private boolean canBeOrdered;
+    private Map<Product, Integer> listOfProducts;
 
-    public Order(User user, boolean canBeOrdered) {
+
+    public Order(User user, Map<Product, Integer> orderedProducts) {
+        this.listOfProducts = listOfProducts;
         this.user = user;
-        this.canBeOrdered = canBeOrdered;
     }
     public User getUser() {
         return user;
     }
-    public boolean canBeOrdered() {
-        return canBeOrdered;
-    }
+
 }
