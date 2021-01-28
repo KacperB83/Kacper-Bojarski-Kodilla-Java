@@ -16,7 +16,7 @@ public class OrderApplication {
         OrderRequest orderRequest = orderRequestRetriever.retrieve();
 
         ProductOrderService productOrderService = new ProductOrderService(new ProductRepository(products),
-                new MailService(), new ProductsOrderedService(), new ProductsOrderedRepository());
+                new MailService(), new ProductsOrderedRepository());
         productOrderService.process(orderRequest);
     }
 }
