@@ -1,16 +1,18 @@
 package com.kodilla.good.patterns.challenges.Food2Door;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 public class OrderRequestRetriever {
-    public OrderRequest retrieve() {
-        User user = new User("Jan", "Kowalski", "j.kowalski@gmail.com");
 
-        List<Product> listOfProducts = new ArrayList<>();
-        listOfProducts.add(new Product("Extra Flakes","ExtraFoodShop", 5));
-        listOfProducts.add(new Product("Extra smoothie", "ExtraFoodShop", 5));
-        listOfProducts.add(new Product("Healthy pierogi", "HealthyShop", 5));
+    private User user;
+    private Map<Product, Integer> listOfProducts;
+
+    public OrderRequestRetriever(User user, Map<Product, Integer> listOfProducts) {
+        this.user = user;
+        this.listOfProducts = listOfProducts;
+    }
+
+    public OrderRequest retrieve() {
 
         return new OrderRequest(user, listOfProducts);
     }
