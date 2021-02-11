@@ -1,5 +1,7 @@
 package com.kodilla.good.patterns.challenges.orderService;
 
+import java.util.Map;
+
 public class ProductOrderService {
     private InformationService informationService;
     private OrderRepository orderRepository;
@@ -15,17 +17,15 @@ public class ProductOrderService {
 
     public Order process(final OrderRequest orderRequest) {
 
-            boolean productAvailable = productRepository.checkAvailability(orderRequest);
-            if (!productAvailable) {
-                informationService.inform(orderRequest.getUser());
-                orderRepository.createOrder(orderRequest.getUser(), productRepository.getOrderedProducts(), productRepository.getTotalPrice());
+        boolean productAvailable = productRepository.checkAvailability(orderRequest);
+        if (productAvailable) {
+            informationService.inform(orderRequest.getUser());
+            orderRepository.createOrder(orderRequest.getUser(), productRepository.getOrderedProducts(), productRepository.getTotalPrice());
 
-                return new Order(orderRequest.getUser(), productRepository.getOrderedProducts(), productRepository.getTotalPrice());
-            } else {
-                System.out.println("We can't realize Your order.");
-                return null;
-                //return new Order(orderRequest.getUser(), productRepository.getOrderedProducts(), productRepository.getTotalPrice());
-            }
+            return new Order(orderRequest.getUser(), productRepository.getOrderedProducts(), productRepository.getTotalPrice());
+        } else {
+            System.out.println("We can't realize Your order.");
+            return null;
         }
-
+    }
 }

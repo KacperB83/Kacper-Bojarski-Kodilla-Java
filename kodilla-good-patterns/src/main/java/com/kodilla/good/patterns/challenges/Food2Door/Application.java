@@ -1,31 +1,47 @@
 package com.kodilla.good.patterns.challenges.Food2Door;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Application {
     public static void main(String[] args) {
-        Supplier extraFoodShop = new Supplier("ExtraFoodShop");
-        extraFoodShop.addProduct(new Product("Extra Flakes", "ExtraFoodShop", 10));
-        extraFoodShop.addProduct(new Product("Extra candies", "ExtraFoodShop",  100));
-        extraFoodShop.addProduct(new Product("Extra chocolate bar", "ExtraFoodShop", 100));
-        extraFoodShop.addProduct(new Product("Extra smoothie", "ExtraFoodShop", 100));
+        String extraFoodShop = "ExtraFoodShop";
+        Map<Product, Integer> extraFoodShopMap = new HashMap<>();
+        extraFoodShopMap.put(new Product("Extra Flakes", "ExtraFoodShop", 5), 100);
+        extraFoodShopMap.put(new Product("Extra candies", "ExtraFoodShop",  5), 50);
+        extraFoodShopMap.put(new Product("Extra chocolate bar", "ExtraFoodShop", 5), 100);
+        extraFoodShopMap.put(new Product("Extra smoothie", "ExtraFoodShop", 5), 50);
 
-        Supplier healthyShop = new Supplier("HealthyShop");
-        healthyShop.addProduct(new Product("Healthy noodles", "HealthyShop", 15));
-        healthyShop.addProduct(new Product("Healthy pierogi","HealthyShop", 25));
-        healthyShop.addProduct(new Product("Healthy potatoes", "HealthyShop", 10));
+        String glutenFreeShop = "GlutenFreeShop";
+        Map<Product, Integer> glutenFreeShopMap = new HashMap<>();
+        glutenFreeShopMap.put(new Product("GF bread", "GlutenFreeShop", 15), 100);
+        glutenFreeShopMap.put(new Product("GF baguette","GlutenFreeShop",  25), 100);
+        glutenFreeShopMap.put(new Product("GF chocolate cake", "GlutenFreeShop", 10), 10);
+        glutenFreeShopMap.put(new Product("GF nachos", "GlutenFreeShop",  35), 50);
 
+        String healthyShop = "HealthyShop";
+        Map<Product, Integer> healthyShopMap = new HashMap<>();
+        healthyShopMap.put(new Product("Healthy noodles", "HealthyShop", 5), 50);
+        healthyShopMap.put(new Product("Healthy pierogi","HealthyShop", 5), 100);
+        healthyShopMap.put(new Product("Healthy potatoes", "HealthyShop", 10), 5);
 
-        Supplier glutenFreeShop = new Supplier("GlutenFreeShop");
-        glutenFreeShop.addProduct(new Product("GF bread", "GlutenFreeShop", 15));
-        glutenFreeShop.addProduct(new Product("GF baguette","GlutenFreeShop",  25));
-        glutenFreeShop.addProduct(new Product("GF chocolate cake", "GlutenFreeShop", 10));
-        glutenFreeShop.addProduct(new Product("GF nachos", "GlutenFreeShop",  35));
+        User user = new User("Jan", "Kowalski", "j.kowalski@gmail.com");
 
-        OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
+        Map<Product, Integer> listOfOrderedProducts = new HashMap<>();
+        listOfOrderedProducts.put(new Product("Extra Flakes","ExtraFoodShop", 5), 5);
+        listOfOrderedProducts.put(new Product("Extra smoothie", "ExtraFoodShop", 5), 5);
+        listOfOrderedProducts.put(new Product("Healthy pierogi", "HealthyShop", 5), 10);
+
+        OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever(user, listOfOrderedProducts);
         OrderRequest orderRequest = orderRequestRetriever.retrieve();
 
         OrderService orderService = new OrderService(
-                new MailService(), new SupplierOrderRepository(), new SupplierRepository()
-        );
+                new ExtraFoodShop(extraFoodShop, extraFoodShopMap),
+                new GlutenFreeShop(glutenFreeShop, glutenFreeShopMap),
+                new HealthyShop(healthyShop, healthyShopMap),
+                new MailService(), new SupplierOrderRepository());
         orderService.process(orderRequest);
+
+        //System.out.println(orderRequest.getProducts());
     }
 }
