@@ -1,7 +1,5 @@
 package com.kodilla.good.patterns.challenges.orderService;
 
-import java.util.Map;
-
 public class ProductOrderService {
     private InformationService informationService;
     private OrderRepository orderRepository;

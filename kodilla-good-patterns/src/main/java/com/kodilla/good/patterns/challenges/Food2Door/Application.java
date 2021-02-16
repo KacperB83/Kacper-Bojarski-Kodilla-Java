@@ -41,7 +41,5 @@ public class Application {
                 new HealthyShop(healthyShop, healthyShopMap),
                 new MailService(), new SupplierOrderRepository());
         orderService.process(orderRequest);
-
-        //System.out.println(orderRequest.getProducts());
     }
 }

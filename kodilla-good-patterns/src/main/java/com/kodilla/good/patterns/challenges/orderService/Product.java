@@ -3,6 +3,7 @@ package com.kodilla.good.patterns.challenges.orderService;
 import java.util.Objects;
 
 public class Product {
+
     private String nameOfProduct;
     private String nameOfProducer;
     private int price;

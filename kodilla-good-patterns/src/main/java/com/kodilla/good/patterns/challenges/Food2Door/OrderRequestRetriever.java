@@ -13,7 +13,6 @@ public class OrderRequestRetriever {
     }
 
     public OrderRequest retrieve() {
-
         return new OrderRequest(user, listOfProducts);
     }
 }
