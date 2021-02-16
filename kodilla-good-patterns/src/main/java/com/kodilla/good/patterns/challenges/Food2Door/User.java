@@ -3,6 +3,7 @@ package com.kodilla.good.patterns.challenges.Food2Door;
 import java.util.Objects;
 
 public class User {
+
     private String name;
     private String lastName;
     private String email;

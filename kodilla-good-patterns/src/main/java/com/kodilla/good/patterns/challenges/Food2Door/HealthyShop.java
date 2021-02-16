@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class HealthyShop {
+
     private String supplierName;
     private Map<Product, Integer> products;
     private Map<Product, Integer> orderedProducts = new HashMap<>();

@@ -3,6 +3,7 @@ package com.kodilla.good.patterns.challenges.Food2Door;
 import java.util.Map;
 
 public class Order {
+
     private User user;
     private String supplierName;
     private Map<Product, Integer> listOfProducts;
@@ -14,8 +15,8 @@ public class Order {
         this.totalPrice = totalPrice;
         this.supplierName = supplierName;
     }
+
     public User getUser() {
         return user;
     }
-
 }
