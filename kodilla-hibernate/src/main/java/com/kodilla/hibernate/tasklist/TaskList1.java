@@ -4,17 +4,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "TASKLIST")
-public class TaskList {
+@Table(name = "TASKLISTS")
+public class TaskList1 {
 
     private int id;
     private String listName;
     private String description;
 
-    public TaskList() {
+    public TaskList1() {
     }
 
-    public TaskList(String listName, String description) {
+    public TaskList1(String listName, String description) {
         this.listName = listName;
         this.description = description;
     }
@@ -27,6 +27,7 @@ public class TaskList {
         return id;
     }
 
+    @NotNull
     @Column(name = "LISTNAME")
     public String getListName() {
         return listName;
@@ -36,6 +37,7 @@ public class TaskList {
     public String getDescription() {
         return description;
     }
+
 
     public void setId(int id) {
         this.id = id;
@@ -48,4 +50,5 @@ public class TaskList {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
