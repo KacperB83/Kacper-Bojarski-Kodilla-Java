@@ -14,7 +14,8 @@ public class Item {
     private int quantity;
     private BigDecimal value = price.multiply(BigDecimal.valueOf(quantity));
 
-    public Item() {}
+    public Item() {
+    }
 
     public Item(Product product, BigDecimal price, int quantity) {
         this.product = product;
@@ -36,7 +37,7 @@ public class Item {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
+    @JoinColumn(name = "INVOICE_ID")
     public Product getProduct() {
         return product;
     }
