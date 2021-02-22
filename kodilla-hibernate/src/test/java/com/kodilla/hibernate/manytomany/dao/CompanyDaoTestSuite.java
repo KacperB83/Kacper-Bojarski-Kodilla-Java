@@ -17,6 +17,9 @@ public class CompanyDaoTestSuite {
     @Autowired
     private CompanyDao companyDao;
 
+    @Autowired
+    private EmployeeDao employeeDao;
+
     @Test
     void testSaveManyToMany() {
         //Given
@@ -48,6 +51,7 @@ public class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
+        List<Employee> employee = employeeDao.retrieveEmployees("Smith");
         List<Company> companiesNamesStartingWith = companyDao.retrieveCompaniesNamesStartingWithLetters();
 
         //Then
@@ -55,6 +59,7 @@ public class CompanyDaoTestSuite {
         assertNotEquals(0, dataMatersId);
         assertNotEquals(0, greyMatterId);
 
+        assertEquals(1, employee.size());
         assertEquals(1, companiesNamesStartingWith);
 
         //CleanUp
