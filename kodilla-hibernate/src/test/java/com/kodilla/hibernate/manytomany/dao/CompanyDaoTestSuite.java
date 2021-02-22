@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
@@ -45,10 +48,14 @@ public class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
+        List<Company> companiesNamesStartingWith = companyDao.retrieveCompaniesNamesStartingWithLetters();
+
         //Then
         assertNotEquals(0, softwareMachineId);
         assertNotEquals(0, dataMatersId);
         assertNotEquals(0, greyMatterId);
+
+        assertEquals(1, companiesNamesStartingWith);
 
         //CleanUp
         try {
