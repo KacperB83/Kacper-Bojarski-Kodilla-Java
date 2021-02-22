@@ -5,6 +5,13 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedNativeQuery(
+        name = "Company.retrieveCompaniesNamesStartingWithLetters",
+        query = "SELECT COMPANY_NAME FROM COMPANIES" +
+                " WHERE COMAPANY_NAME LIKE 'Sof%'",
+        resultClass = Company.class
+)
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
