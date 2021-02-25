@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -51,24 +52,36 @@ public class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
+        employeeDao.save(johnSmith);
+        int johnId = johnSmith.getId();
+        employeeDao.save(stephanieClarckson);
+        int stephId = stephanieClarckson.getId();
+        employeeDao.save(lindaKovalsky);
+        int lindaId = lindaKovalsky.getId();
+
         List<Employee> employee = employeeDao.retrieveEmployees("Smith");
         List<Company> companiesNamesStartingWith = companyDao.retrieveCompaniesNamesStartingWithLetters();
-
         //Then
         assertNotEquals(0, softwareMachineId);
         assertNotEquals(0, dataMatersId);
         assertNotEquals(0, greyMatterId);
 
         assertEquals(1, employee.size());
-        assertEquals(1, companiesNamesStartingWith);
+        assertEquals(1, companiesNamesStartingWith.size());
 
         //CleanUp
         try {
             companyDao.deleteById(softwareMachineId);
             companyDao.deleteById(dataMatersId);
             companyDao.deleteById(greyMatterId);
+
+            employeeDao.deleteById(johnId);
+            employeeDao.deleteById(stephId);
+            employeeDao.deleteById(lindaId);
+
         } catch (Exception e) {
             //do nothing
         }
     }
+
 }

@@ -9,19 +9,19 @@ import java.math.BigDecimal;
 public class Item {
 
     private int id;
+    private Invoice invoice;
     private Product product;
     private BigDecimal price;
     private int quantity;
-    private BigDecimal value = price.multiply(BigDecimal.valueOf(quantity));
 
     public Item() {
     }
 
-    public Item(Product product, BigDecimal price, int quantity) {
+    public Item(Invoice invoice, Product product, BigDecimal price, int quantity) {
         this.product = product;
         this.price = price;
         this.quantity = quantity;
-        //this.value = value;
+        this.invoice = invoice;
     }
 
     @Id
@@ -38,6 +38,16 @@ public class Item {
 
     @ManyToOne
     @JoinColumn(name = "INVOICE_ID")
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
     }
@@ -65,12 +75,8 @@ public class Item {
         this.quantity = quantity;
     }
 
-    @Column(name = "VALUE")
+    @Transient
     public BigDecimal getValue() {
-        return value;
-    }
-
-    public void setValue(BigDecimal value) {
-        this.value = value;
+        return price.multiply(BigDecimal.valueOf(quantity));
     }
 }

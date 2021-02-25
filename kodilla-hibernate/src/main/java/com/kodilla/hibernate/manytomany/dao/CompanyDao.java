@@ -5,6 +5,7 @@ import com.kodilla.hibernate.manytomany.Employee;
 import com.kodilla.hibernate.task.Task;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -16,5 +17,5 @@ public interface CompanyDao extends CrudRepository<Company, Integer> {
 
     @Query(nativeQuery = true)
     List<Company> retrieveCompaniesNamesStartingWithLetters();
-
+    //@Param("nameStartsWith") String COMPANY_NAME
 }
