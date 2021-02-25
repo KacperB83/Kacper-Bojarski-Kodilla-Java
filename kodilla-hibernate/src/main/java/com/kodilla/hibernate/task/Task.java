@@ -97,11 +97,11 @@ public final class Task {
         this.description = description;
     }
 
-    public void setCreated(Date created) {
+    private void setCreated(Date created) {
         this.created = created;
     }
 
-    public void setDuration(int duration) {
+    private void setDuration(int duration) {
         this.duration = duration;
     }
 }

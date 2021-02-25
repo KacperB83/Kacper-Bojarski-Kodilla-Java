@@ -9,7 +9,7 @@ public class FindFlights {
 
     public FindFlights(String nameOfAirport) {
         this.nameOfAirport = nameOfAirport;
-        this.flightMap = flightMap;
+
     }
 
     public void findFlightsFrom(FlightsRepository flightsRepository) {

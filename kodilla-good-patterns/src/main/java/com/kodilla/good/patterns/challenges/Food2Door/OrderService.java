@@ -22,7 +22,7 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public void process(final OrderRequest orderRequest) {
+    public Order process(final OrderRequest orderRequest) {
 
         boolean checkExtraFoodShop = extraFoodShop.checkAvailability(orderRequest);
         boolean checkGlutenFreeShop = glutenFreeShop.checkAvailability(orderRequest);
@@ -46,5 +46,6 @@ public class OrderService {
         } else {
             System.out.println("We can't realize Your order.");
         }
+        return null;
     }
 }
