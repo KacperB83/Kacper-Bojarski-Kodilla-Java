@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -61,6 +60,10 @@ public class CompanyDaoTestSuite {
 
         List<Employee> employee = employeeDao.retrieveEmployees("Smith");
         List<Company> companiesNamesStartingWith = companyDao.retrieveCompaniesNamesStartingWithLetters();
+        employee.stream()
+                .forEach(System.out::println);
+        companiesNamesStartingWith.stream()
+                .forEach(System.out::println);
         //Then
         assertNotEquals(0, softwareMachineId);
         assertNotEquals(0, dataMatersId);

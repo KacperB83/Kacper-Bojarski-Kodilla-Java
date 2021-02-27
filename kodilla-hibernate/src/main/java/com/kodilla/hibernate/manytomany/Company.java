@@ -9,6 +9,7 @@ import java.util.List;
         name = "Company.retrieveCompaniesNamesStartingWithLetters",
         query = "SELECT * FROM COMPANIES" +
                 " WHERE COMPANY_NAME LIKE 'Sof%'",
+        //'nameStartsWith+%'
         resultClass = Company.class
 )
 
@@ -56,4 +57,13 @@ public class Company {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
+
