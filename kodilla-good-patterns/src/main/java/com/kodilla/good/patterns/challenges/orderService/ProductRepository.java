@@ -8,7 +8,6 @@ import java.util.Map;
 public class ProductRepository {
 
     private Map<Product, Integer> products;
-    private Map<Product, Integer> orderedProducts = new HashMap<>();
     private List<Integer> totalPrice = new ArrayList<>();
 
     public ProductRepository (Map<Product, Integer> products){
@@ -17,19 +16,20 @@ public class ProductRepository {
 
     public Map<Product, Integer> checkAvailability(OrderRequest orderRequest) {
 
+        Map<Product, Integer> orderedProducts = new HashMap<>();
+
         for (Map.Entry<Product, Integer> orderMap : orderRequest.getProducts().entrySet()) {
             if (products.containsKey(orderMap.getKey())) {
                 if (products.get(orderMap.getKey()).intValue() >= orderMap.getValue()) {
                     System.out.println("This " + orderMap.getKey() + " can be ordered.");
+                    this.products.put(orderMap.getKey(), products.get(orderMap.getKey()).intValue() - orderMap.getValue());
                     orderedProducts.put((orderMap.getKey()), orderMap.getValue());
                     totalPrice.add(orderMap.getKey().getPrice());
-
                 } else {
                     System.out.println("We do not have enough items of this product: " + orderMap.getKey());
                 }
             } else {
                 System.out.println("Sorry, we do not have this product: " + orderMap.getKey() + " in our stock.");
-
             }
         }
         return orderedProducts;
