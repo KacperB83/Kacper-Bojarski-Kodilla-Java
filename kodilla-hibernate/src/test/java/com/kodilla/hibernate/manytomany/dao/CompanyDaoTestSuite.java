@@ -74,13 +74,13 @@ public class CompanyDaoTestSuite {
 
         //CleanUp
         try {
-            companyDao.deleteById(softwareMachineId);
+         /*   companyDao.deleteById(softwareMachineId);
             companyDao.deleteById(dataMatersId);
             companyDao.deleteById(greyMatterId);
 
             employeeDao.deleteById(johnId);
             employeeDao.deleteById(stephId);
-            employeeDao.deleteById(lindaId);
+            employeeDao.deleteById(lindaId);*/
 
         } catch (Exception e) {
             //do nothing
