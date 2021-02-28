@@ -1,6 +1,7 @@
 package com.kodilla.patterns.builder.bigmac;
 
 import com.kodilla.patterns.builder.pizza.Pizza;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
