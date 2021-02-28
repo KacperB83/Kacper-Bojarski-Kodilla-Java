@@ -4,5 +4,5 @@ import java.util.Map;
 
 public interface OrderRepository {
 
-    void createOrder(User user, String supplierName, Map<Product, Integer> products, int totalPrice);
+    void createOrder(User user, Map<Product, Integer> products, int sum);
 }

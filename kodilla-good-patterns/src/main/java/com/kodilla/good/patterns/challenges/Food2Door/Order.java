@@ -9,7 +9,7 @@ public class Order {
     private Map<Product, Integer> listOfProducts;
     private int totalPrice;
 
-    public Order(User user, String supplierName, Map<Product, Integer> listOfProducts, int totalPrice) {
+    public Order(User user, Map<Product, Integer> listOfProducts, int sum) {
         this.listOfProducts = listOfProducts;
         this.user = user;
         this.totalPrice = totalPrice;
