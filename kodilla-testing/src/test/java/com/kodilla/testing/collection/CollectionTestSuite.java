@@ -54,8 +54,9 @@ class CollectionTestSuite {
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
        // List<Integer> numbers1 = new ArrayList<>();
         //When
-        Integer nr[] = new Integer[] {6, 1, 4, 3, 10};
-        List<Integer> numbers1 = Arrays.asList(nr);
+        //Integer nr[] = new Integer[] {6, 1, 4, 3, 10};
+        //List<Integer> numbers1 = Arrays.asList(nr);
+        List<Integer> numbers1 = Arrays.asList(6, 1, 4, 3, 10);
         /*numbers1.add(6);
         numbers1.add(1);
         numbers1.add(4);
