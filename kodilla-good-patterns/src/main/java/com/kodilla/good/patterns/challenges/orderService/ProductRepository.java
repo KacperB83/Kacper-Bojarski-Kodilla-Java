@@ -15,7 +15,7 @@ public class ProductRepository {
         this.products = products;
     }
 
-    public boolean checkAvailability(OrderRequest orderRequest) {
+    public Map<Product, Integer> checkAvailability(OrderRequest orderRequest) {
 
         for (Map.Entry<Product, Integer> orderMap : orderRequest.getProducts().entrySet()) {
             if (products.containsKey(orderMap.getKey())) {
@@ -23,19 +23,15 @@ public class ProductRepository {
                     System.out.println("This " + orderMap.getKey() + " can be ordered.");
                     orderedProducts.put((orderMap.getKey()), orderMap.getValue());
                     totalPrice.add(orderMap.getKey().getPrice());
-                    continue;
+
                 } else {
                     System.out.println("We do not have enough items of this product: " + orderMap.getKey());
                 }
             } else {
                 System.out.println("Sorry, we do not have this product: " + orderMap.getKey() + " in our stock.");
-                continue;
+
             }
         }
-        return true;
-    }
-
-    public Map<Product, Integer> getOrderedProducts() {
         return orderedProducts;
     }
 
