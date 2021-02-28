@@ -1,6 +1,7 @@
 package com.kodilla.good.patterns.challenges.Food2Door;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,8 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     public OrderService(final ExtraFoodShop extraFoodShop, final GlutenFreeShop glutenFreeShop,
-                        final HealthyShop healthyShop, final InformationService informationService,
+                        final HealthyShop healthyShop,
+                        final InformationService informationService,
                         final OrderRepository orderRepository) {
         this.extraFoodShop = extraFoodShop;
         this.glutenFreeShop = glutenFreeShop;
@@ -24,28 +26,35 @@ public class OrderService {
 
     public Order process(final OrderRequest orderRequest) {
 
-        boolean checkExtraFoodShop = extraFoodShop.checkAvailability(orderRequest);
-        boolean checkGlutenFreeShop = glutenFreeShop.checkAvailability(orderRequest);
-        boolean checkHealthyShop = healthyShop.checkAvailability(orderRequest);
+        Map<Product, Integer> productsAvailable = new HashMap<>();
+        List<Integer> totalValue = new ArrayList<>();
 
-        if (checkExtraFoodShop) {
+        productsAvailable.putAll(extraFoodShop.process(orderRequest));
+        totalValue.add(extraFoodShop.getValue());
+        productsAvailable.putAll(glutenFreeShop.process(orderRequest));
+        totalValue.add(glutenFreeShop.getValue());
+        productsAvailable.putAll(healthyShop.process(orderRequest));
+        totalValue.add(healthyShop.getValue());
+
+        int sum = sumValue(totalValue);
+
+        if (productsAvailable.size() > 0) {
             informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(), extraFoodShop.getSupplierName(), extraFoodShop.getOrderedProducts(), extraFoodShop.getTotalPrice());
-            new Order(orderRequest.getUser(), extraFoodShop.getSupplierName(), extraFoodShop.getOrderedProducts(), extraFoodShop.getTotalPrice());
-        }
-        if (checkGlutenFreeShop) {
-            informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(), glutenFreeShop.getSupplierName(), glutenFreeShop.getOrderedProducts(), glutenFreeShop.getTotalPrice());
-            new Order(orderRequest.getUser(), glutenFreeShop.getSupplierName(), glutenFreeShop.getOrderedProducts(), glutenFreeShop.getTotalPrice());
-        }
-        if (checkHealthyShop) {
-            informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(), healthyShop.getSupplierName(), healthyShop.getOrderedProducts(), healthyShop.getTotalPrice());
-            new Order(orderRequest.getUser(), healthyShop.getSupplierName(), healthyShop.getOrderedProducts(), healthyShop.getTotalPrice());
+            orderRepository.createOrder(orderRequest.getUser(), productsAvailable, sum);
+
+            return new Order(orderRequest.getUser(), productsAvailable, sum);
 
         } else {
             System.out.println("We can't realize Your order.");
+            return null;
         }
-        return null;
+    }
+
+    private int sumValue(List<Integer> totalValue) {
+        int sum = 0;
+        for(int s: totalValue) {
+            sum += s;
+        }
+        return sum;
     }
 }

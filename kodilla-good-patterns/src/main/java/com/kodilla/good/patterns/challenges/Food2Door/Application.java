@@ -39,7 +39,7 @@ public class Application {
                 new ExtraFoodShop(extraFoodShop, extraFoodShopMap),
                 new GlutenFreeShop(glutenFreeShop, glutenFreeShopMap),
                 new HealthyShop(healthyShop, healthyShopMap),
-                new MailService(), new SupplierOrderRepository());
+        new MailService(), new SupplierOrderRepository());
         orderService.process(orderRequest);
     }
 }

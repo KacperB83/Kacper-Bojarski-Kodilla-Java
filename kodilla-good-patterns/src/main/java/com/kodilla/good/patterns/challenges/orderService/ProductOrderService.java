@@ -1,6 +1,5 @@
 package com.kodilla.good.patterns.challenges.orderService;
 
-import java.util.List;
 import java.util.Map;
 
 public class ProductOrderService {
@@ -19,7 +18,7 @@ public class ProductOrderService {
     public Order process(final OrderRequest orderRequest) {
 
         Map<Product, Integer> productsAvailable = productRepository.checkAvailability(orderRequest);
-        if (productsAvailable.size() != 0) {
+        if (productsAvailable.size() > 0) {
             informationService.inform(orderRequest.getUser());
             orderRepository.createOrder(orderRequest.getUser(), productsAvailable, productRepository.getTotalPrice());
 
