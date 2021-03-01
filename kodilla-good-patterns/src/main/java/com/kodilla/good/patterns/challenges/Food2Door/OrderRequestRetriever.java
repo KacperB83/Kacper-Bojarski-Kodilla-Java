@@ -12,7 +12,7 @@ public class OrderRequestRetriever {
         this.listOfProducts = listOfProducts;
     }
 
-    public OrderRequest retrieve() {
+    public com.kodilla.good.patterns.challenges.Food2Door.OrderRequest retrieve() {
         return new OrderRequest(user, listOfProducts);
     }
 }

@@ -52,7 +52,7 @@ public class OrderService {
 
     private int sumValue(List<Integer> totalValue) {
         int sum = 0;
-        for(int s: totalValue) {
+        for (int s : totalValue) {
             sum += s;
         }
         return sum;

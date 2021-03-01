@@ -9,6 +9,6 @@ public class ProductsOrderedRepository implements OrderRepository {
     @Override
     public void createOrder(User user, Map<Product, Integer> products, int totalPrice) {
         orders.put(user, products);
-        System.out.println("Order for products : \n" + orders.values().toString()+"\n has been created." + "\n Total price: "+totalPrice);
+        System.out.println("Order for products : \n" + orders.values().toString() + "\n has been created." + "\n Total price: " + totalPrice);
     }
 }

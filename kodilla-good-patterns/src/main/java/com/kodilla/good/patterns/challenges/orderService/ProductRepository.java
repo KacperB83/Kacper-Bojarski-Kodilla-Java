@@ -10,7 +10,7 @@ public class ProductRepository {
     private Map<Product, Integer> products;
     private List<Integer> totalPrice = new ArrayList<>();
 
-    public ProductRepository (Map<Product, Integer> products){
+    public ProductRepository(Map<Product, Integer> products) {
         this.products = products;
     }
 
@@ -37,7 +37,7 @@ public class ProductRepository {
 
     public int getTotalPrice() {
         int sum = 0;
-        for(int s: totalPrice) {
+        for (int s : totalPrice) {
             sum += s;
         }
         return sum;

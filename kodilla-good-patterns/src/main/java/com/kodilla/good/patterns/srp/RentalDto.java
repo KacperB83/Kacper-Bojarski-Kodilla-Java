@@ -9,7 +9,11 @@ public class RentalDto {
         this.isRented = isRented;
     }
 
-    public User getUser() { return user; }
+    public User getUser() {
+        return user;
+    }
 
-    public boolean isRented() { return isRented; }
+    public boolean isRented() {
+        return isRented;
+    }
 }

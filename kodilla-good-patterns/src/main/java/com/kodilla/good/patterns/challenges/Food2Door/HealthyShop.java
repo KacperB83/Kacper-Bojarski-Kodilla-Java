@@ -37,7 +37,7 @@ public class HealthyShop implements ProducerMultiplier {
     @Override
     public int getValue() {
         int sum = 0;
-        for(int s: totalPrice) {
+        for (int s : totalPrice) {
             sum += s;
         }
         return sum;

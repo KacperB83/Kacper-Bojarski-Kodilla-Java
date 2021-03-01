@@ -10,7 +10,7 @@ public class SupplierOrderRepository implements OrderRepository {
     @Override
     public void createOrder(User user, Map<Product, Integer> product, int sum) {
         orders.put(user, product);
-        System.out.println("Order for products : \n" + orders.values().toString()+"\n has been created." + "\n Total price: "+sum);
+        System.out.println("Order for products : \n" + orders.values().toString() + "\n has been created." + "\n Total price: " + sum);
 
     }
 
