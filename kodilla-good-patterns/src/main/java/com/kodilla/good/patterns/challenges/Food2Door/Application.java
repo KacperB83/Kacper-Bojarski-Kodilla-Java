@@ -1,6 +1,8 @@
 package com.kodilla.good.patterns.challenges.Food2Door;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Application {
@@ -25,6 +27,11 @@ public class Application {
         healthyShopMap.put(new Product("Healthy pierogi", "HealthyShop", 5), 100);
         healthyShopMap.put(new Product("Healthy potatoes", "HealthyShop", 10), 5);
 
+        List<ProducerMultiplier> producers = new ArrayList<>();
+        producers.add(new ExtraFoodShop(extraFoodShop, extraFoodShopMap));
+        producers.add(new GlutenFreeShop(glutenFreeShop, glutenFreeShopMap));
+        producers.add(new HealthyShop(healthyShop, healthyShopMap));
+
         User user = new User("Jan", "Kowalski", "j.kowalski@gmail.com");
 
         Map<Product, Integer> listOfOrderedProducts = new HashMap<>();
@@ -36,9 +43,7 @@ public class Application {
         OrderRequest orderRequest = orderRequestRetriever.retrieve();
 
         OrderService orderService = new OrderService(
-                new ExtraFoodShop(extraFoodShop, extraFoodShopMap),
-                new GlutenFreeShop(glutenFreeShop, glutenFreeShopMap),
-                new HealthyShop(healthyShop, healthyShopMap),
+                producers,
                 new MailService(), new SupplierOrderRepository());
         orderService.process(orderRequest);
     }
