@@ -31,7 +31,7 @@ public class MovieStore {
     public static void main(String[] args) {
         MovieStore movieStore = new MovieStore();
         Map<String, List<String>> theResultListOfMovies = movieStore.getMovies();
-                theResultListOfMovies.entrySet().stream()
+        theResultListOfMovies.entrySet().stream()
                 .forEach(e -> System.out.print(e.getValue() + " ! "));
 
     }
