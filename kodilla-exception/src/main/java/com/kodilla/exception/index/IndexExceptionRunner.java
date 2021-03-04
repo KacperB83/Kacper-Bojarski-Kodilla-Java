@@ -1,8 +1,5 @@
 package com.kodilla.exception.index;
 
-import com.kodilla.exception.test.FindFlight;
-import com.kodilla.exception.test.Flight;
-
 import java.util.List;
 
 public class IndexExceptionRunner {
