@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class RentRequestRetriever {
 
-    public RentRequest retrieve() {
+    public com.kodilla.good.patterns.srp.RentRequest retrieve() {
         User user = new User("John", "Wekl");
 
         LocalDateTime rentFrom = LocalDateTime.of(2017, 8, 1, 12, 0);

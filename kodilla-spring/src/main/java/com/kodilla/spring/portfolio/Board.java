@@ -5,26 +5,22 @@ import java.util.List;
 
 public class Board {
 
-    List<TaskList> toDoList = new ArrayList<>();
-    List<TaskList> inProgressList = new ArrayList<>();
-    List<TaskList> doneList = new ArrayList<>();
-    private TaskList taskList;
+    private TaskList toDoList;
+    private TaskList inProgressList;
+    private TaskList doneList;
 
-    public Board(TaskList taskList) {
-
-        if(taskList.equals("toDoTask")){
-        toDoList.add(taskList);
-        }
-        if(taskList.equals("inProgressTask")){
-        inProgressList.add(taskList);
-        }
-        if(taskList.equals("doneTask")){
-        doneList.add(taskList);
-        }
-        this.taskList = taskList;
+    public Board(TaskList toDoList, TaskList inProgressList, TaskList doneList) {
+        this.toDoList = toDoList;
+        this.inProgressList = inProgressList;
+        this.doneList = doneList;
     }
 
-    public List<String> showList() {
-        return taskList.getTasks();
+    public List<TaskList> showLists() {
+        List<TaskList> list = new ArrayList<>();
+        list.add(toDoList);
+        list.add(inProgressList);
+        list.add(doneList);
+
+        return list;
     }
 }
