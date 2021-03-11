@@ -44,17 +44,15 @@ public class FindFlights {
                     .collect(Collectors.toList());*/
             Map<Airport, List<Airport>> finalMap = new HashMap<>();
 
+        Map<Airport, List<Airport>> resultMap2 = flightMap.entrySet().stream()
+                .filter(e -> e.getKey().equals(flightTo) && e.getValue().contains(flightBy))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+            finalMap.putAll(resultMap2);
+
             Map<Airport, List<Airport>> resultMap = flightMap.entrySet().stream()
                     .filter(e -> e.getKey().equals(flightFrom) && e.getValue().contains(flightBy))
-                    .collect(Collectors.toMap(Map.Entry::getKey,
-                            Map.Entry::getValue));
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
             finalMap.putAll(resultMap);
-
-            Map<Airport, List<Airport>> resultMap2 = flightMap.entrySet().stream()
-                    .filter(e -> e.getKey().equals(flightTo) && e.getValue().contains(flightBy))
-                    .collect(Collectors.toMap(Map.Entry::getKey,
-                            Map.Entry::getValue));
-            finalMap.putAll(resultMap2);
 
             return finalMap;
         }
