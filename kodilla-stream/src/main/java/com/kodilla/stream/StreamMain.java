@@ -67,7 +67,7 @@ public class StreamMain {
                 .forEach(System.out::println);*/
 
 
-      /*  BookDirectory theBookDirectory = new BookDirectory();
+        BookDirectory theBookDirectory = new BookDirectory();
         String theResultStringOfBooks = theBookDirectory.getList().stream()
                 .filter(book -> book.getYearOfPublication() > 2005)
                 .map(Book::toString)
@@ -82,7 +82,7 @@ public class StreamMain {
         System.out.println("# elements: " + theResultMapOfBooks.size());
         theResultMapOfBooks.entrySet().stream()
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
-                .forEach(System.out::println);*/
+                .forEach(System.out::println);
 
 
        /* List<Book> theResultListOfBooks = theBookDirectory.getList().stream()

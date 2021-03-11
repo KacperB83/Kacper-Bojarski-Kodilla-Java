@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.challenges.orderService;
 
-public class MailService implements InformationService {
+public class MailService implements InformationServiceOS {
 
     @Override
     public void inform(User user) {

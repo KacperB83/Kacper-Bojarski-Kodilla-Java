@@ -22,13 +22,23 @@ public class Application {
 
         //FlightsRepository flightsRepository = new FlightsRepository(flightMap);
 
-        Airport flightRequest = new Airport("Warsaw");
+        Airport flightFrom = new Airport("Warsaw");
+        Airport flightTo = new Airport("New York");
+        Airport flightBy = new Airport("Lisbon");
 
-        FindFlights findFlights = new FindFlights(flightRequest, flightMap);
+        FindFlights findFlights = new FindFlights(flightFrom, flightTo, flightMap);
 
-        findFlights.findFlightsFrom();
-        findFlights.findFlightsTo();
-        findFlights.findFlightToBy();
+        List<Airport> listOfFllightsFrom = findFlights.findFlightsFrom();
+        List<Airport> listOfFlightsTo = findFlights.findFlightsTo();
+        Map<Airport, List<Airport>> listOfFlightsBy = findFlights.findFlightToBy(flightBy);
+        System.out.println();
+        System.out.println("Possible flights from " + flightFrom + " to: " +listOfFllightsFrom);
+        System.out.println();
+        System.out.println("Possible flights to " + flightTo + " from: " +listOfFlightsTo);
+        System.out.println();
+        System.out.println("Flights from " + flightFrom+ " to "+ flightTo+" by " + flightBy + ": \n" + listOfFlightsBy);
+
+
 
 
     }

@@ -8,18 +8,18 @@ import java.util.Map;
 public class OrderService {
 
     private List<ProducerMultiplier> producers;
-    private InformationService informationService;
+    private InformationServiceF2D informationService;
     private OrderRepository orderRepository;
 
     public OrderService(final List<ProducerMultiplier> producers,
-                        final InformationService informationService,
+                        final InformationServiceF2D informationService,
                         final OrderRepository orderRepository) {
         this.producers = producers;
         this.informationService = informationService;
         this.orderRepository = orderRepository;
     }
 
-    public Order process(final OrderRequest orderRequest) {
+    public Order processOrders(final OrderRequest orderRequest) {
 
         Map<Product, Integer> productsAvailable = new HashMap<>();
         List<Integer> totalValue = new ArrayList<>();
