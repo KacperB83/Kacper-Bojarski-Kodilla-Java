@@ -59,7 +59,7 @@ public class CompanyDaoTestSuite {
         int lindaId = lindaKovalsky.getId();
 
         List<Employee> employee = employeeDao.retrieveEmployees("Smith");
-        List<Company> companiesNamesStartingWith = companyDao.retrieveCompaniesNamesStartingWithLetters("Sof");
+        List<Company> companiesNamesStartingWith = companyDao.retrieveCompaniesNamesStartingWithLetters("Sof%");
         employee.stream()
                 .forEach(System.out::println);
         companiesNamesStartingWith.stream()
