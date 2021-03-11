@@ -4,12 +4,12 @@ import java.util.Map;
 
 public class ProductOrderService {
     private ProductRepository productRepository;
-    private InformationService informationService;
+    private InformationServiceOS informationService;
     private OrderRepository orderRepository;
 
 
     public ProductOrderService(final ProductRepository productRepository,
-                               final InformationService informationService,
+                               final InformationServiceOS informationService,
                                final OrderRepository orderRepository) {
         this.informationService = informationService;
         this.orderRepository = orderRepository;

@@ -45,6 +45,6 @@ public class Application {
         OrderService orderService = new OrderService(
                 producers,
                 new MailService(), new SupplierOrderRepository());
-        orderService.process(orderRequest);
+        orderService.processOrders(orderRequest);
     }
 }
