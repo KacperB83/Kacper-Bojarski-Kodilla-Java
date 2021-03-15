@@ -20,26 +20,21 @@ public class Application {
         flightMap.put(lisbon, Arrays.asList(newYork, frankfurt));
         flightMap.put(newYork, Arrays.asList(lisbon));
 
-        //FlightsRepository flightsRepository = new FlightsRepository(flightMap);
+        Airport flightFrom = warsaw;
+        Airport flightTo = newYork;
+        Airport flightBy = lisbon;
 
-        Airport flightFrom = new Airport("Warsaw");
-        Airport flightTo = new Airport("New York");
-        Airport flightBy = new Airport("Lisbon");
+        FindFlights findFlights = new FindFlights(flightFrom, flightTo, flightBy, flightMap);
 
-        FindFlights findFlights = new FindFlights(flightFrom, flightTo, flightMap);
-
-        List<Airport> listOfFllightsFrom = findFlights.findFlightsFrom();
+        List<Airport> listOfFlightsFrom = findFlights.findFlightsFrom();
         List<Airport> listOfFlightsTo = findFlights.findFlightsTo();
-        Map<Airport, List<Airport>> listOfFlightsBy = findFlights.findFlightToBy(flightBy);
+        List<Airport> listOfFlightsBy = findFlights.findFlightToBy();
+
         System.out.println();
-        System.out.println("Possible flights from " + flightFrom + " to: " +listOfFllightsFrom);
+        System.out.println("Possible flights from " + flightFrom + " to: " +listOfFlightsFrom);
         System.out.println();
         System.out.println("Possible flights to " + flightTo + " from: " +listOfFlightsTo);
         System.out.println();
-        System.out.println("Flights from " + flightFrom+ " to "+ flightTo+" by " + flightBy + ": \n" + listOfFlightsBy);
-
-
-
-
+        System.out.println("Flights by " + flightBy +" to " + flightTo + " are possible from: \n" + listOfFlightsBy);
     }
 }
