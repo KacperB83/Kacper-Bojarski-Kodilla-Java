@@ -1,7 +1,5 @@
 package com.kodilla.good.patterns.challenges.flights;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -10,12 +8,14 @@ public class FindFlights {
 
     private final Airport flightFrom;
     private final Airport flightTo;
+    private final Airport flightBy;
 
     private final Map<Airport, List<Airport>> flightMap;
 
-    public FindFlights(Airport flightFrom, Airport flightTo, Map<Airport, List<Airport>> flightMap) {
+    public FindFlights(Airport flightFrom, Airport flightTo, Airport flightBy, Map<Airport, List<Airport>> flightMap) {
         this.flightFrom = flightFrom;
         this.flightTo = flightTo;
+        this.flightBy = flightBy;
         this.flightMap = flightMap;
     }
 
@@ -35,27 +35,14 @@ public class FindFlights {
         return list;
     }
 
-    public Map<Airport, List<Airport>> findFlightToBy(Airport flightBy) {
+    public List<Airport> findFlightToBy() {
 
-            /*List<List<Airport>> resultList = flightMap.entrySet().stream()
-                    .filter(e -> e.getValue().contains(flightTo))
-                    .map(e -> e.getValue())
-                    .filter(e -> e.equals(flightBy))
-                    .collect(Collectors.toList());*/
-            Map<Airport, List<Airport>> finalMap = new HashMap<>();
-
-        Map<Airport, List<Airport>> resultMap2 = flightMap.entrySet().stream()
-                .filter(e -> e.getKey().equals(flightTo) && e.getValue().contains(flightBy))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-            finalMap.putAll(resultMap2);
-
-            Map<Airport, List<Airport>> resultMap = flightMap.entrySet().stream()
-                    .filter(e -> e.getKey().equals(flightFrom) && e.getValue().contains(flightBy))
-                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-            finalMap.putAll(resultMap);
-
-            return finalMap;
-        }
+        List<Airport> resultList = flightMap.entrySet().stream()
+                    .filter(e -> e.getValue().contains(flightBy) &&  !(e.getKey().equals(flightTo)))
+                    .map(e -> e.getKey())
+                    .collect(Collectors.toList());
+        return resultList;
+    }
 }
 
 

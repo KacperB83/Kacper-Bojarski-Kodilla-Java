@@ -20,24 +20,21 @@ public class Application {
         flightMap.put(lisbon, Arrays.asList(newYork, frankfurt));
         flightMap.put(newYork, Arrays.asList(lisbon));
 
-        Airport flightFrom = new Airport("Warsaw");
-        Airport flightTo = new Airport("New York");
-        Airport flightBy = new Airport("Lisbon");
+        Airport flightFrom = warsaw;
+        Airport flightTo = newYork;
+        Airport flightBy = lisbon;
 
-        FindFlights findFlights = new FindFlights(flightFrom, flightTo, flightMap);
+        FindFlights findFlights = new FindFlights(flightFrom, flightTo, flightBy, flightMap);
 
         List<Airport> listOfFlightsFrom = findFlights.findFlightsFrom();
         List<Airport> listOfFlightsTo = findFlights.findFlightsTo();
-        Map<Airport, List<Airport>> listOfFlightsBy = findFlights.findFlightToBy(flightBy);
+        List<Airport> listOfFlightsBy = findFlights.findFlightToBy();
+
         System.out.println();
         System.out.println("Possible flights from " + flightFrom + " to: " +listOfFlightsFrom);
         System.out.println();
         System.out.println("Possible flights to " + flightTo + " from: " +listOfFlightsTo);
         System.out.println();
-        System.out.println("Flights from " + flightFrom+ " to "+ flightTo+" by " + flightBy + ": \n" + listOfFlightsBy);
-
-
-
-
+        System.out.println("Flights by " + flightBy +" to " + flightTo + " are possible from: \n" + listOfFlightsBy);
     }
 }
