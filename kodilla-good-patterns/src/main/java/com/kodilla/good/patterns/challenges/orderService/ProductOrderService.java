@@ -3,12 +3,13 @@ package com.kodilla.good.patterns.challenges.orderService;
 import java.util.Map;
 
 public class ProductOrderService {
-    private InformationService informationService;
-    private OrderRepository orderRepository;
     private ProductRepository productRepository;
+    private InformationServiceOS informationService;
+    private OrderRepository orderRepository;
+
 
     public ProductOrderService(final ProductRepository productRepository,
-                               final InformationService informationService,
+                               final InformationServiceOS informationService,
                                final OrderRepository orderRepository) {
         this.informationService = informationService;
         this.orderRepository = orderRepository;

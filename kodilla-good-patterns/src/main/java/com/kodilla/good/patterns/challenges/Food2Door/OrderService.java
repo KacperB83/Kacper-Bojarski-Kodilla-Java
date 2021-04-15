@@ -7,34 +7,27 @@ import java.util.Map;
 
 public class OrderService {
 
-    private ExtraFoodShop extraFoodShop;
-    private GlutenFreeShop glutenFreeShop;
-    private HealthyShop healthyShop;
-    private InformationService informationService;
+    private List<ProducerMultiplier> producers;
+    private InformationServiceF2D informationService;
     private OrderRepository orderRepository;
 
-    public OrderService(final ExtraFoodShop extraFoodShop, final GlutenFreeShop glutenFreeShop,
-                        final HealthyShop healthyShop,
-                        final InformationService informationService,
+    public OrderService(final List<ProducerMultiplier> producers,
+                        final InformationServiceF2D informationService,
                         final OrderRepository orderRepository) {
-        this.extraFoodShop = extraFoodShop;
-        this.glutenFreeShop = glutenFreeShop;
-        this.healthyShop = healthyShop;
+        this.producers = producers;
         this.informationService = informationService;
         this.orderRepository = orderRepository;
     }
 
-    public Order process(final OrderRequest orderRequest) {
+    public Order processOrders(final OrderRequest orderRequest) {
 
         Map<Product, Integer> productsAvailable = new HashMap<>();
         List<Integer> totalValue = new ArrayList<>();
 
-        productsAvailable.putAll(extraFoodShop.process(orderRequest));
-        totalValue.add(extraFoodShop.getValue());
-        productsAvailable.putAll(glutenFreeShop.process(orderRequest));
-        totalValue.add(glutenFreeShop.getValue());
-        productsAvailable.putAll(healthyShop.process(orderRequest));
-        totalValue.add(healthyShop.getValue());
+        for(ProducerMultiplier producer: producers) {
+            productsAvailable.putAll(producer.process(orderRequest));
+            totalValue.add(producer.getValue());
+        }
 
         int sum = sumValue(totalValue);
 
@@ -52,7 +45,7 @@ public class OrderService {
 
     private int sumValue(List<Integer> totalValue) {
         int sum = 0;
-        for(int s: totalValue) {
+        for (int s : totalValue) {
             sum += s;
         }
         return sum;

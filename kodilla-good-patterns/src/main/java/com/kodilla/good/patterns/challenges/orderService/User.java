@@ -36,6 +36,6 @@ public class User {
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
-                ", lastName='" + lastName+'}';
+                ", lastName='" + lastName + '}';
     }
 }

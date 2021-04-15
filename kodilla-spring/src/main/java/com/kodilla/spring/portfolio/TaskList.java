@@ -11,10 +11,10 @@ public class TaskList {
         this.tasks = new ArrayList<>(tasks);
     }
 
-    public List<String> getTasks() {
-        for (String s: tasks) {
-            System.out.println(s);
-        }
-        return tasks;
+    @Override
+    public String toString() {
+        return "TaskList{" +
+                "tasks = " + tasks +
+                '}';
     }
 }
