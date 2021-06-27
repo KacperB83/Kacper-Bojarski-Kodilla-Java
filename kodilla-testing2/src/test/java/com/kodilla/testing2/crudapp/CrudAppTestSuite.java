@@ -106,11 +106,11 @@ public class CrudAppTestSuite {
     }
 
     public void deleteCrudAppTestTask(String taskName) throws InterruptedException {
-        final String XPATH_TASK_TO_DELETE = "//button[\"Delete\" and last()]";
+        //final String XPATH_TASK_TO_DELETE = "//fieldset[contains("+taskName+") and button[\"Delete\"]";
+        final String XPATH_TASK_TO_DELETE = "//button[\"Delete\" and -1]";
 
         WebElement name = driver.findElement(By.xpath(XPATH_TASK_TO_DELETE));
         name.click();
-        name.submit();
     }
 
     @Test
