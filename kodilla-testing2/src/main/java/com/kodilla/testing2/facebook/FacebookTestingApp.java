@@ -4,17 +4,16 @@ import com.kodilla.testing2.config.WebDriverConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class FacebookTestingApp {
     public static final String XPATH_COOKIE = "//div/button[2]";
-    public static final String XPATH_NEW_ACCOUNT = "//form/div[5]/a";
+    public static final String XPATH_NEW_ACCOUNT = "//div[5]/a";
 
-    //public static final String XPATH_DATE_DAY = "//select[contains(@aria-label, \"Dzień\")]";
-    //*[@id="day"]
-    public static final String XPATH_DATE_DAY = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[5]/div[2]/span/span/select[@id=\"day\"]";
-   // public static final String XPATH_DATE_MONTH = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[5]/div[2]/span/span/select[2]";
-   // public static final String XPATH_DATE_YEAR = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[5]/div[2]/span/span/select[3]";
-    public static void main(String[] args) {
+    public static final String XPATH_DATE_DAY = "day";
+    public static final String XPATH_DATE_MONTH = "month";
+    public static final String XPATH_DATE_YEAR = "year";
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
         driver.get("https://www.facebook.com/");
 
@@ -23,14 +22,27 @@ public class FacebookTestingApp {
 
         WebElement newAccount = driver.findElement(By.xpath(XPATH_NEW_ACCOUNT));
         newAccount.click();
+        Thread.sleep(5000);
 
-        WebElement day = driver.findElement(By.name("birthday_day"));
-        day.click();
-        day.submit();
+        WebElement dayLabel = driver.findElement(By.id(XPATH_DATE_DAY));
+        dayLabel.click();
+        Select day = new Select(dayLabel);
+        day.selectByIndex(3);
+        Thread.sleep(1000);
+        WebElement monthLabel = driver.findElement(By.id(XPATH_DATE_MONTH));
+        monthLabel.click();
+        Select month = new Select(monthLabel);
+        month.selectByIndex(3);
+        Thread.sleep(1000);
+        WebElement yearLabel = driver.findElement(By.id(XPATH_DATE_YEAR));
+        dayLabel.click();
+        Select year = new Select(yearLabel);
+        year.selectByVisibleText("1984");
+        Thread.sleep(1000);
 
-        WebElement month = driver.findElement(By.xpath(XPATH_DATE_DAY));
+       /* WebElement month = driver.findElement(By.xpath(XPATH_DATE_MONTH));
         month.click();
-        month.submit();
+        month.submit();*/
 
 
 

@@ -13,7 +13,7 @@ public class StoredProcTestSuite {
     public void testUpdateBestsellers() throws SQLException {
         //Given
         DbManager dbManagerNew = DbManager.getInstance();
-        String newRent = "INSERT INTO RENTS(BOOK_ID, READER_ID, RENT_DATE, RETURN_DATE) VALUES (1, 4, DATE_SUB(CURDATE(), INTERVAL 10 DAY), null)";
+       // String newRent = "INSERT INTO RENTS(BOOK_ID, READER_ID, RENT_DATE, RETURN_DATE) VALUES (1, 4, DATE_SUB(CURDATE(), INTERVAL 10 DAY), null)";
         String procedure = "CALL UpdateBestsellers()";
         Statement statementNew = dbManagerNew.getConnection().createStatement();
         int rsNew = statementNew.executeUpdate(procedure);
@@ -34,9 +34,9 @@ public class StoredProcTestSuite {
                 counter++;
             }
         }
+        assertEquals(3, counter);
         rs.close();
         statement.close();
-        assertEquals(2, counter);
     }
 
     @Test
